@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Rohini Hospital </title>
+    <!-- main css file  -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- bootsrtap css file  -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- favicon  -->
+    <link rel="icon" href="/images/new-favicon.png">
+    <!-- bootsrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- jquery ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Login Modal Structure -->
+    <div class="modal fade login-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down pop-up-main">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-primary" id="tpa-login">TPA </button>
+                    <button type="button" class="btn btn-primary" id="hospital-login">HOSPITAL </button>
+                    <button type="button" class="btn btn-primary" id="insurance-com-login">INSURANCE COMPANY </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pop-up-body">
+                    <input class="form-control form-control-sm mb-3" type="text" id="loginUserId" placeholder="Email "
+                        aria-label="User ID" required>
+                    <input class="form-control form-control-sm mb-3" type="password" id="loginPassword"
+                        placeholder="Password" aria-label="Password" required>
+
+                    <div class="captcha-box mb-3">
+                        <label for="captchaInput" class="form-label">Captcha</label>
+                        <input class="form-control form-control-sm" type="text" id="captchaInput"
+                            placeholder="Enter Captcha" aria-label="Captcha" required>
+                        <input class="form-control form-control-sm mt-2" disabled type="text" value="ABCD1234"
+                            aria-label="Captcha Value" readonly>
+                        <div class="refresh-btn mt-2" style="cursor:pointer;">
+                            <span>
+                                <i class="fa-solid fa-arrows-rotate"></i> Refresh Captcha
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- home main header  -->
+    <header class="home-main-header">
+        <nav class="home-main-nav">
+            <div class="nav-leftside">
+                <a href="/"> <img src="/images/main-full-logo.png" alt="roheni-logo" class="img-fluid"></a>
+            </div>
+            <div class="nav-rightside">
+                <div class="nav-rightside-ul">
+                    <li><a href="/"><button type="button" class="btn btn-primary">Home</button></a></li>
+                    <li>
+
+                        <a href="/about-us"> <button type="button" class="btn btn-primary">About us</button></a>
+
+                    </li>
+                    <li>
+
+
+                        <button type="button" class="btn btn-primary"> <a href="/contact-us">Contact us </a></button>
+
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            Login
+                        </button>
+                    </li>
+
+
+
+
+
+                </div>
+            </div>
+
+            <!-- mobile view bars  -->
+            <div class="nav-rightside-for-mobile">
+                <i class="bi bi-list" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+                    aria-controls="offcanvasTop"> </i>
+
+
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop"
+                    aria-labelledby="offcanvasTopLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasTopLabel">
+                            <!-- main logo for offcanvas  -->
+                            <img src="/images/main-full-logo.png" class="img-fluid" alt="">
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="offcanvas-body-main-ul">
+                            <li><a href="index.html">Home </a></li>
+                            <li><a href="aboutus.html">About Us </a></li>
+                            <li><a href="contactus.html">Contact Us</a></li>
+                            <li><a href="#Newriegistor">New Registor with Us </a></li>
+                            <!-- <li><a href="#How to Registor">How To Registor </a></li> -->
+                            <li><a href="#Hospital request" data-bs-toggle="modal"
+                                    data-bs-target="#hospitalRequestModal">Hospital Request </a></li>
+                        </ul>
+                        <ul class="offcanvas-body-main-ul-2">
+                            <li>
+                                <a href="#login"><button type="button" class="btn btn-outline-primary"
+                                        data-bs-toggle="modal" data-bs-target="#loginModal">Login </button></a>
+                            </li>
+                            <!-- <li><a href="#regit"><button type="button" class="btn btn-outline-primary">Registor Now
+                                    </button></a></li> -->
+                        </ul>
+                        <div class="request-a-call-bk">
+                            <button type="button" class="btn btn-outline-primary">Request a Call Back
+                                <span><i class="bi bi-telephone"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </nav>
+
+    </header>
+    <!-- marquee tags  -->
+    <div class="container-fluid  marqee-main">
+        <div class="row align-items-center">
+            <div class="col-2 latest-new-img">
+                <img src="/images/latest-new--removebg-preview.png" class="img-fluid" width="150" alt="">
+            </div>
+            <div class="col-10 marquee-box">
+                <marquee behavior="" direction="" id="news-marquee">
+
+                    <span>
+                        <img src="/images/new-icon-smal.png" class="img-fluid" width="30" alt="">
+                    </span> <span id="news-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, modi.
+                        Nam totam fugit porro
+                        at autem aliquid architecto eos molestiae?
+                    </span>
+                    <span>
+                        <img src="/images/new-icon-smal.png" class="img-fluid" width="30" alt="">
+                    </span>
+                </marquee>
+            </div>
+        </div>
+
+    </div>
+    <section class="contact-us-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 p-0 ">
+                    <div class="contact-us-main-left-box">
+                        <h2 class="contact-us-heading">
+                            Contact Us
+                        </h2>
+                        <ul class="contact-us-left-ul">
+                            <li> <span><i class="bi bi-building"></i></span>Address :- <span id="address">145/45 Rohini,Sector-03,New Delhi</span></li>
+                            <li><span><i class="bi bi-envelope"></i></span>Email :- <span id="email">Info@rohinihospital.com </span></li>
+                            <li><span><i class="bi bi-telephone"></i></span>Contact :- +91 - <span id="contact_number">98547625</span></li>
+                            <li><span><i class="bi bi-telephone"></i></span>Ledline :- <span id="landline_number">12453519</span></li>
+                            <li> <span><i class="bi bi-globe"></i></span>Website :- www.rohinihospital.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-us-main-right-box">
+                        <h2 class="contact-us-form-heading">
+                            Request A Call Back
+                        </h2>
+                        <hr>
+                        <div class="query-form">
+                            <form class="row g-2 needs-validation" id="query_form" novalidate>
+                                <!-- first Name  -->
+                                <div class="col-md-6">
+                                    <label for="validationCustom01" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="first_name" required>
+
+                                </div>
+                                <!-- Last Name  -->
+                                <div class="col-md-6">
+                                    <label for="validationCustom02" class="form-label">Last name</label>
+                                    <input type="text" class="form-control" id="last_name" required>
+
+                                </div>
+                                <!-- Email  -->
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Email Id </label>
+                                    <input type="email" class="form-control" id="from_email" required>
+
+                                </div>
+                                <!-- Contact Us  -->
+                                <div class="col-md-12">
+                                    <label for="validationCustom04" class="form-label">Contact us </label>
+                                    <input type="text" class="form-control" id="contact_us" required>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="validationCustom03" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid city.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationCustom04" class="form-label">State</label>
+                                    <select class="form-select" id="state" required>
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="U.P.">U.P.</option>
+                                        <option value="Haryana">Haryana</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid state.
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationCustom05" class="form-label">Zip</label>
+                                    <input type="text" class="form-control" id="zip" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid zip.
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here"
+                                            id="comment"></textarea>
+                                        <label for="floatingTextarea">Comments</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- footer -->
+    <footer class="home-main-footer">
+        <div class="footer-main-col ">
+            <ul class="footer-main-ul">
+                <li><span>E</span>XCLUDED HOSPITAL BY </li>
+                <li><span>I</span>NSURANCE</li>
+                <li><span>I</span>NFORMATION</li>
+                <li><span>B</span>UREAU OF INDIA</li>
+            </ul>
+        </div>
+        <!-- <div class="footer-main-col first-col">
+            <img src="/images/footer-1-img.png" class="img-fluid" alt="">
+        </div> -->
+
+        <div class="footer-main-col text-center">
+            <img src="/images/footer-1-img.png" class="img-fluid" alt="">
+            <br>
+            <img src="/images/footer-eiib.png" class="img-fluid" alt="">
+        </div>
+    </footer>
+    <!-- copy right line -->
+    <div class="copyright-line  text-center">
+        <p class="mb-0">© <span>ROHENI</span> COPYRIGHT ALL RIGHTS RESERVED ESERVED
+            2015-2024</p>
+    </div>
+    <!-- bootsrap js file  -->
+    <script src="/js/bootsrtap.js"></script>
+    <!-- main js file  -->
+    <script src="/js/main.js"></script>
+    <script>
+        // Function to fetch the latest news from the server
+        function loadLatestNews() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/news/get-latest-news', // API to get the latest news
+                success: function (response) {
+                    if (response.success) {
+                        // If news is found, update the marquee text
+                        $('#news-text').text(response.latestNews);
+                    } else {
+                        // If no news, show a default message or handle error
+                        $('#news-text').text('No latest news available at the moment.');
+                    }
+                },
+                error: function (error) {
+                    console.error('Error fetching latest news:', error);
+                    // In case of error, set default text
+                    $('#news-text').text('Error fetching news.');
+                }
+            });
+        }
+
+        // Function to fetch the latest contact us content from the server
+        function loadContactUsContent() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/contact-us/get-contact-us', // API to get the contact us content
+                success: function (response) {
+                    if (response.success) {
+                        const contactUs = response.contactUs;
+                        // Populate the Contact Us content dynamically
+                        $('#address').text(contactUs.address);
+                        $('#email').text(contactUs.email);
+                        $('#contact_number').text(contactUs.contactNumber);
+                        $('#landline_number').text(contactUs.landlineNumber);
+                    } else {
+                        // If no content, show a defcontactUsault message or handle error
+                        console.error('Error fetching Contact Us content:', response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error fetching contact us content:', error);
+                    alert(error.responseJSON.message);
+                }
+            });
+        }
+
+        function submitQuery() {
+            var data = {
+                // Get values of inputs by their IDs
+                firstname: $('#first_name').val(),
+                lastname: $('#last_name').val(),
+                email: $('#from_email').val(),
+                contactNumber: $('#contact_us').val(),
+                city: $('#city').val(),
+                state: $('#state').val(),
+                zip: $('#zip').val()
+            }
+            $.ajax({
+                type: "POST",
+                url: "/api/enquiry/create",
+                dataType: 'JSON',
+                data: data,
+                success: function success(result) {
+                    window.alert('Enquiry created successfully. Kindly check your email');
+                    $('#query_form')[0].reset();  // Reset form fields
+                },
+                error: function error(error) {
+                    console.log(error, 'error');
+                    window.alert(`${error.responseJSON.message}`);
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            loadLatestNews();
+            loadContactUsContent();
+            $('#query_form').submit(function (e) {
+                e.preventDefault();
+                submitQuery();
+            })
+        })
+    </script>
+
+</body>
+
+</html>

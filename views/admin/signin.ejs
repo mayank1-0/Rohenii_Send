@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      max-width: 400px;
+      padding: 60px;
+      background-color: white;
+      border-radius: 10px;
+      border: 2px solid gray;
+    }
+  </style>
+  <!-- jquery ajax -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="login-container">
+    <h2 class="text-center font-weight-bold">Sign In</h2>
+    <form id="sign-in-form">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+    </form>
+    <p class="text-center mt-3">
+      <a href="/admin/forgot-password">Forgot your password?</a>
+    </p>
+  </div>
+</body>
+<script>
+  $("#sign-in-form").submit((e) => {
+    e.preventDefault();
+    login();
+  });
+
+  // Function to handle login
+  function login() {
+    const email = $('#email').val();
+    const password = $('#password').val();
+
+    const data = { email, password };
+
+    $.ajax({
+      type: "POST",
+      url: `/api/admin/login`,
+      dataType: 'JSON',
+      data: data,
+      success: function success(result) {
+        window.alert('Sign in success');
+        window.location.href = '/admin/dashboard';
+      },
+      error: function error(error) {
+        window.alert(`${error.responseJSON.message}`);
+      }
+    })
+  }
+</script>
+
+</html>

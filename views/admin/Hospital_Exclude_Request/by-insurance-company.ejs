@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" data-navigation-type="default" data-navbar-horizontal-shape="default">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Roheni - Hospital Exclude Request By Ins. Company</title>
+    <link rel="icon " href="/admin/assets/img/roheni-img/new-favicon.png">
+    <link rel="manifest" href="/admin/assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="/admin/assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+    <script src="/admin/vendors/simplebar/simplebar.min.js"></script>
+    <script src="/admin/assets/js/config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link href="/admin/vendors/simplebar/simplebar.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href="/admin/assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
+    <link href="/admin/assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
+    <link href="/admin/assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
+    <link href="/admin/assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+    <script>
+        var phoenixIsRTL = window.config.config.phoenixIsRTL;
+        if (phoenixIsRTL) {
+            var linkDefault = document.getElementById('style-default');
+            var userLinkDefault = document.getElementById('user-style-default');
+            linkDefault.setAttribute('disabled', true);
+            userLinkDefault.setAttribute('disabled', true);
+            document.querySelector('html').setAttribute('dir', 'rtl');
+        } else {
+            var linkRTL = document.getElementById('style-rtl');
+            var userLinkRTL = document.getElementById('user-style-rtl');
+            linkRTL.setAttribute('disabled', true);
+            userLinkRTL.setAttribute('disabled', true);
+        }
+    </script>
+    <link href="/admin/vendors/leaflet/leaflet.css" rel="stylesheet">
+    <link href="/admin/vendors/leaflet.markercluster/MarkerCluster.css" rel="stylesheet">
+    <link href="/admin/vendors/leaflet.markercluster/MarkerCluster.Default.css" rel="stylesheet">
+    <!-- jquery ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <main class="main" id="top">
+        <%- include("../../components/admin/navbar") %>
+
+
+            <script>
+                var navbarTopShape = window.config.config.phoenixNavbarTopShape;
+                var navbarPosition = window.config.config.phoenixNavbarPosition;
+                var body = document.querySelector('body');
+                var navbarDefault = document.querySelector('#navbarDefault');
+                var navbarTop = document.querySelector('#navbarTop');
+                var topNavSlim = document.querySelector('#topNavSlim');
+                var navbarTopSlim = document.querySelector('#navbarTopSlim');
+                var navbarCombo = document.querySelector('#navbarCombo');
+                var navbarComboSlim = document.querySelector('#navbarComboSlim');
+                var dualNav = document.querySelector('#dualNav');
+
+                var documentElement = document.documentElement;
+                var navbarVertical = document.querySelector('.navbar-vertical');
+
+                if (navbarPosition === 'dual-nav') {
+                    topNavSlim?.remove();
+                    navbarTop?.remove();
+                    navbarTopSlim?.remove();
+                    navbarCombo?.remove();
+                    navbarComboSlim?.remove();
+                    navbarDefault?.remove();
+                    navbarVertical?.remove();
+                    dualNav.removeAttribute('style');
+                    document.documentElement.setAttribute('data-navigation-type', 'dual');
+
+                } else if (navbarTopShape === 'slim' && navbarPosition === 'vertical') {
+                    navbarDefault?.remove();
+                    navbarTop?.remove();
+                    navbarTopSlim?.remove();
+                    navbarCombo?.remove();
+                    navbarComboSlim?.remove();
+                    topNavSlim.style.display = 'block';
+                    navbarVertical.style.display = 'inline-block';
+                    document.documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+
+                } else if (navbarTopShape === 'slim' && navbarPosition === 'horizontal') {
+                    navbarDefault?.remove();
+                    navbarVertical?.remove();
+                    navbarTop?.remove();
+                    topNavSlim?.remove();
+                    navbarCombo?.remove();
+                    navbarComboSlim?.remove();
+                    dualNav?.remove();
+                    navbarTopSlim.removeAttribute('style');
+                    document.documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+                } else if (navbarTopShape === 'slim' && navbarPosition === 'combo') {
+                    navbarDefault?.remove();
+                    navbarTop?.remove();
+                    topNavSlim?.remove();
+                    navbarCombo?.remove();
+                    navbarTopSlim?.remove();
+                    dualNav?.remove();
+                    navbarComboSlim.removeAttribute('style');
+                    navbarVertical.removeAttribute('style');
+                    document.documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+                } else if (navbarTopShape === 'default' && navbarPosition === 'horizontal') {
+                    navbarDefault?.remove();
+                    topNavSlim?.remove();
+                    navbarVertical?.remove();
+                    navbarTopSlim?.remove();
+                    navbarCombo?.remove();
+                    navbarComboSlim?.remove();
+                    dualNav?.remove();
+                    navbarTop.removeAttribute('style');
+                    document.documentElement.setAttribute('data-navigation-type', 'horizontal');
+                } else if (navbarTopShape === 'default' && navbarPosition === 'combo') {
+                    topNavSlim?.remove();
+                    navbarTop?.remove();
+                    navbarTopSlim?.remove();
+                    navbarDefault?.remove();
+                    navbarComboSlim?.remove();
+                    dualNav?.remove();
+                    navbarCombo.removeAttribute('style');
+                    navbarVertical.removeAttribute('style');
+                    document.documentElement.setAttribute('data-navigation-type', 'combo');
+                } else {
+                    topNavSlim?.remove();
+                    navbarTop?.remove();
+                    navbarTopSlim?.remove();
+                    navbarCombo?.remove();
+                    navbarComboSlim?.remove();
+                    dualNav?.remove();
+                    navbarDefault.removeAttribute('style');
+                    navbarVertical.removeAttribute('style');
+                }
+
+                var navbarTopStyle = window.config.config.phoenixNavbarTopStyle;
+                var navbarTop = document.querySelector('.navbar-top');
+                if (navbarTopStyle === 'darker') {
+                    navbarTop.setAttribute('data-navbar-appearance', 'darker');
+                }
+
+                var navbarVerticalStyle = window.config.config.phoenixNavbarVerticalStyle;
+                var navbarVertical = document.querySelector('.navbar-vertical');
+                if (navbarVerticalStyle === 'darker') {
+                    navbarVertical.setAttribute('data-navbar-appearance', 'darker');
+                }
+            </script>
+            <div class="content">
+                <div class="pb-5">
+                    <!-- <div class="row g-4">
+                        <div class="col-12 col-xxl-6">
+                            <div class="mb-8">
+                                <h2 class="mb-2">Admin - Subscriptions Details ( HOSPITAL ) </h2>
+                                <h5 class="text-body-tertiary fw-semibold">Subscription - Paid / Unpaid / Renewal Data
+                                </h5>
+                            </div>
+
+
+
+                            <div class="col-12 col-xxl-6">
+                                <div class="row g-3 ">
+                                    <div class="col-12 col-md-12 mb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <div class="card_header_tp">
+                                                    <h4>Complete Details of Hospital </h4>
+                                                </div>
+                                                <div class="subs_card_body_paid">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped border">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Hospital Name</th>
+                                                                    <th>Email</th>
+                                                                    <th>Contact Number</th>
+                                                                    <th>Contact Person</th>
+                                                                    <th>Status</th>
+                                                                    <th>Timing</th>
+                                                                    <th>Address</th>
+                                                                    <th>Pincode</th>
+                                                                    <th>District</th>
+                                                                    <th>State</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="selected-hospital">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-7 border-y">
+                        <div data-list='{"valueNames":["product","customer","rating","review","time"],"page":6}'>
+                            <div class="row align-items-end justify-content-between pb-5 g-3">
+                                <div class="col-auto">
+                                    <h3>Exclude Hospital Request List </h3>
+                                    <p class="text-body-tertiary lh-sm mb-0">All Requests To Exclude Hospitals By
+                                        Insurance Companies List </p>
+                                </div>
+                                <!-- <div class="col-auto">
+                                    <button type="button" class="btn btn-success mx-2" id="paid_button">Paid </button>
+                                    <button type="button" class="btn btn-danger mx-2" id="unpaid_button">Unpiad
+                                    </button>
+                                    <button type="button" class="btn btn-warning  mx-2 " id="renewal_button">Renewal
+                                    </button>
+                                </div> -->
+                                <div class="col-12 col-md-auto">
+                                    <div class="row g-2 gy-3">
+                                        <div class="col-auto flex-1">
+                                            <div class="search-box">
+                                                <form class="position-relative"><input
+                                                        class="form-control search-input search form-control-sm"
+                                                        type="search" id="hospital-search" placeholder="Search"
+                                                        aria-label="Search" />
+                                                    <span class="fas fa-search search-box-icon"></span>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive scrollbar mx-n1 px-1 pr-4">
+                                <div class="container-fluid ">
+                                    <div class="table-responsive">
+                                        <table
+                                            class="table table-bordered table-striped table-hover text-center hospital_status_main_table ">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col" style="min-width: 150px; max-width: 200px;">Hospital
+                                                        Name</th>
+                                                    <th scope="col" style="min-width: 150px; max-width: 200px;">Email
+                                                    </th>
+                                                    <th scope="col" style="min-width: 150px; max-width: 200px;">Contact
+                                                        Number</th>
+                                                    <th scope="col" style="min-width: 150px; max-width: 200px;">Address
+                                                    </th>
+                                                    <th scope="col" style="min-width: 150px; max-width: 200px;">Excluded
+                                                        By Insurance Company
+                                                    </th>
+                                                    <th scope="col" style="min-width: 150px; max-width: 200px;">Action
+                                                    </th>
+                                                    <!-- <th scope="col" class="main-table-column-heading">Excluded by TPA/Insurance</th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody id="table_body">
+                                                <!-- <tr class="paid-row" id="paid-row">
+                      </tr>
+                      <tr class="unpiad-row " id="unpaid-row">
+                      </tr>
+                      <tr class="renewal-row " id="renewal-row">
+                      </tr> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row align-items-center py-1">
+                                <div class="pagination d-none"></div>
+                                <div class="col d-flex fs-9">
+                                    <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body"
+                                        data-list-info="data-list-info"></p><a class="fw-semibold" href="#!"
+                                        data-list-view="*">View all<span class="fas fa-angle-right ms-1"
+                                            data-fa-transform="down-1"></span></a><a class="fw-semibold d-none"
+                                        href="#!" data-list-view="less">View Less</a>
+                                </div>
+                                <div class="col-auto d-flex">
+                                    <button class="btn btn-link px-1 me-1" type="button" title="Previous"
+                                        data-list-pagination="prev"><span
+                                            class="fas fa-chevron-left me-2"></span>Previous</button><button
+                                        class="btn btn-link px-1 ms-1" type="button" title="Next"
+                                        data-list-pagination="next">Next<span
+                                            class="fas fa-chevron-right ms-2"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="modal fade" id="searchBoxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true"
+                    data-phoenix-modal="data-phoenix-modal" style="--phoenix-backdrop-opacity: 1;">
+                    <div class="modal-dialog">
+                        <div class="modal-content mt-15 rounded-pill">
+                            <div class="modal-body p-0">
+                                <div class="search-box navbar-top-search-box" data-list='{"valueNames":["title"]}'
+                                    style="width: auto;">
+                                    <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
+                                        <input
+                                            class="form-control search-input fuzzy-search rounded-pill form-control-lg"
+                                            type="search" placeholder="Search..." aria-label="Search" />
+                                        <span class="fas fa-search search-box-icon"></span>
+                                    </form>
+                                    <div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none"
+                                        data-bs-dismiss="search"><button class="btn btn-link p-0"
+                                            aria-label="Close"></button></div>
+                                    <div class="dropdown-menu border start-0 py-0 overflow-hidden w-100">
+                                        <div class="scrollbar-overlay" style="max-height: 30rem;">
+                                            <div class="list pb-3">
+                                                <h6 class="dropdown-header text-body-highlight fs-10 py-2">24 <span
+                                                        class="text-body-quaternary">results</span></h6>
+                                                <hr class="my-0" />
+                                                <h6
+                                                    class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                                                    Recently Searched </h6>
+                                                <div class="py-2"><a class="dropdown-item"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="fw-normal text-body-highlight title"><span
+                                                                    class="fa-solid fa-clock-rotate-left"
+                                                                    data-fa-transform="shrink-2"></span> Store
+                                                                Macbook</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="fw-normal text-body-highlight title"> <span
+                                                                    class="fa-solid fa-clock-rotate-left"
+                                                                    data-fa-transform="shrink-2"></span> MacBook Air
+                                                                -
+                                                                13″</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <hr class="my-0" />
+                                                <h6
+                                                    class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                                                    Products</h6>
+                                                <div class="py-2"><a
+                                                        class="dropdown-item py-2 d-flex align-items-center"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="file-thumbnail me-2"><img
+                                                                class="h-100 w-100 object-fit-cover rounded-3"
+                                                                src="assets/img/products/60x60/3.png" alt="" /></div>
+                                                        <div class="flex-1">
+                                                            <h6 class="mb-0 text-body-highlight title">MacBook Air - 13″
+                                                            </h6>
+                                                            <p class="fs-10 mb-0 d-flex text-body-tertiary"><span
+                                                                    class="fw-medium text-body-tertiary text-opactity-85">8GB
+                                                                    Memory - 1.6GHz - 128GB
+                                                                    Storage</span></p>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="file-thumbnail me-2"><img class="img-fluid"
+                                                                src="assets/img/products/60x60/3.png" alt="" /></div>
+                                                        <div class="flex-1">
+                                                            <h6 class="mb-0 text-body-highlight title">MacBook Pro - 13″
+                                                            </h6>
+                                                            <p class="fs-10 mb-0 d-flex text-body-tertiary"><span
+                                                                    class="fw-medium text-body-tertiary text-opactity-85">30
+                                                                    Sep at 12:30 PM</span></p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <hr class="my-0" />
+                                                <h6
+                                                    class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                                                    Quick Links</h6>
+                                                <div class="py-2"><a class="dropdown-item"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="fw-normal text-body-highlight title"><span
+                                                                    class="fa-solid fa-link text-body"
+                                                                    data-fa-transform="shrink-2"></span> Support MacBook
+                                                                House</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="fw-normal text-body-highlight title"> <span
+                                                                    class="fa-solid fa-link text-body"
+                                                                    data-fa-transform="shrink-2"></span> Store MacBook″
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <hr class="my-0" />
+                                                <h6
+                                                    class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                                                    Files</h6>
+                                                <div class="py-2"><a class="dropdown-item"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="fw-normal text-body-highlight title"><span
+                                                                    class="fa-solid fa-file-zipper text-body"
+                                                                    data-fa-transform="shrink-2"></span> Library
+                                                                MacBook folder.rar</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="fw-normal text-body-highlight title"> <span
+                                                                    class="fa-solid fa-file-lines text-body"
+                                                                    data-fa-transform="shrink-2"></span> Feature
+                                                                MacBook extensions.txt</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="fw-normal text-body-highlight title"> <span
+                                                                    class="fa-solid fa-image text-body"
+                                                                    data-fa-transform="shrink-2"></span> MacBook
+                                                                Pro_13.jpg</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <hr class="my-0" />
+                                                <h6
+                                                    class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                                                    Members</h6>
+                                                <div class="py-2"><a
+                                                        class="dropdown-item py-2 d-flex align-items-center"
+                                                        href="pages/members.html">
+                                                        <div class="avatar avatar-l status-online  me-2 text-body">
+                                                            <img class="rounded-circle "
+                                                                src="assets/img/team/40x40/10.webp" alt="" />
+                                                        </div>
+                                                        <div class="flex-1">
+                                                            <h6 class="mb-0 text-body-highlight title">Carry Anna</h6>
+                                                            <p class="fs-10 mb-0 d-flex text-body-tertiary">
+                                                                anna@technext.it</p>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item py-2 d-flex align-items-center"
+                                                        href="pages/members.html">
+                                                        <div class="avatar avatar-l  me-2 text-body">
+                                                            <img class="rounded-circle "
+                                                                src="assets/img/team/40x40/12.webp" alt="" />
+                                                        </div>
+                                                        <div class="flex-1">
+                                                            <h6 class="mb-0 text-body-highlight title">John Smith</h6>
+                                                            <p class="fs-10 mb-0 d-flex text-body-tertiary">
+                                                                smith@technext.it</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <hr class="my-0" />
+                                                <h6
+                                                    class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                                                    Related Searches</h6>
+                                                <div class="py-2"><a class="dropdown-item"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="fw-normal text-body-highlight title"><span
+                                                                    class="fa-brands fa-firefox-browser text-body"
+                                                                    data-fa-transform="shrink-2"></span>
+                                                                Search in the Web MacBook</div>
+                                                        </div>
+                                                    </a>
+                                                    <a class="dropdown-item"
+                                                        href="apps/e-commerce/landing/product-details.html">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="fw-normal text-body-highlight title"> <span
+                                                                    class="fa-brands fa-chrome text-body"
+                                                                    data-fa-transform="shrink-2"></span> Store
+                                                                MacBook″</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="fallback fw-bold fs-7 d-none">No Result Found.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="support-chat-container">
+                    <div class="container-fluid support-chat">
+                        <div class="card bg-body-emphasis">
+                            <div
+                                class="card-header d-flex flex-between-center px-4 py-3 border-bottom border-translucent">
+                                <h5 class="mb-0 d-flex align-items-center gap-2">Demo widget<span
+                                        class="fa-solid fa-circle text-success fs-11"></span></h5>
+                                <div class="btn-reveal-trigger"><button
+                                        class="btn btn-link p-0 dropdown-toggle dropdown-caret-none transition-none d-flex"
+                                        type="button" id="support-chat-dropdown" data-bs-toggle="dropdown"
+                                        data-boundary="window" aria-haspopup="true" aria-expanded="false"
+                                        data-bs-reference="parent"><span
+                                            class="fas fa-ellipsis-h text-body"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-end py-2"
+                                        aria-labelledby="support-chat-dropdown"><a class="dropdown-item"
+                                            href="#!">Request a callback</a><a class="dropdown-item" href="#!">Search in
+                                            chat</a><a class="dropdown-item" href="#!">Show history</a><a
+                                            class="dropdown-item" href="#!">Report
+                                            to Admin</a><a class="dropdown-item btn-support-chat" href="#!">Close
+                                            Support</a></div>
+                                </div>
+                            </div>
+
+    </main>
+
+
+
+    <script src="/admin/vendors/popper/popper.min.js"></script>
+    <script src="/admin/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="/admin/vendors/anchorjs/anchor.min.js"></script>
+    <script src="/admin/vendors/is/is.min.js"></script>
+    <script src="/admin/vendors/fontawesome/all.min.js"></script>
+    <script src="/admin/vendors/lodash/lodash.min.js"></script>
+    <script src="/admin/vendors/list.js/list.min.js"></script>
+    <script src="/admin/vendors/feather-icons/feather.min.js"></script>
+    <script src="/admin/vendors/dayjs/dayjs.min.js"></script>
+    <script src="/admin/vendors/leaflet/leaflet.js"></script>
+    <script src="/admin/vendors/leaflet.markercluster/leaflet.markercluster.js"></script>
+    <script src="/admin/vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js"></script>
+    <script src="/admin/assets/js/phoenix.js"></script>
+    <script src="/admin/vendors/echarts/echarts.min.js"></script>
+    <script src="/admin/assets/js/ecommerce-dashboard.js"></script>
+    <script>
+
+        $(window).on('load', function () {
+            $('#admin-signout').click(logout);
+        });
+
+        $(document).ready(function () {
+            excludedHospitalListByInsuranceCompany();
+        })
+
+        function excludedHospitalListByInsuranceCompany() {
+            let search = $('#hospital-search').val();
+            $.ajax({
+                type: "GET",
+                url: `/api/admin/get-all-hospitals-data-exclude/insurance-company`,
+                data: { name: search },
+                success: function success(result) {
+                    const list = result.data;
+                    $('#table_body').empty(); // Clear existing rows
+                    list.forEach((i) => {
+                        $("#table_body").append(`
+                    <tr id="tr" data-id="${i.hospitalId}">
+                        <td> ${i.hospitalName} </td>
+                        <td> ${i.hospitalEmail} </td>
+                        <td> ${i.hospitalContactNumber} </td>
+                        <td> ${i.hospitalAddress}, ${i.hospitalDistrict}, ${i.hospitalState} - ${i.hospitalPincode} </td>
+                        <td> ${i.excludedByEntityName} </td>
+                        <td class="align-middle white-space-nowrap text-end pe-0 ps-4">
+                            <div class="btn-reveal-trigger position-static"><button
+                            class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button"
+                            data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"
+                            data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                            <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item"
+                            onclick="unExcludeHospital('${i.hospitalId}','${i.excludedByInsuranceCompanies}')">Un-Exclude</a>
+                            <div class="dropdown-divider"></div><a class="dropdown-item text-danger"
+                            onclick="excludeHospital('${i.hospitalId}','${i.excludedByInsuranceCompanies}')">Exclude</a>
+                            </div>
+                            </div>
+                        </td>
+                    </tr>
+                    `)
+                    });
+                },
+                error: function error(error) {
+                    console.log(error, 'error');
+                    window.alert(error.responseJSON.message);
+                }
+            })
+        }
+
+        function unExcludeHospital(hospitalId, unExcludedByInsuranceCompanyId) {
+            $.ajax({
+              type: "POST",
+              url: `/api/admin/unexclude-hospital/insurance-company/${hospitalId}/${unExcludedByInsuranceCompanyId}`,
+              success: function success(result) {
+                window.alert(result.message);
+                $('#table_body').empty();
+                window.location.reload(true);
+              },
+              error: function error(error) {
+                window.alert(error.responseJSON.message);
+                console.log(error, 'error');
+              }
+            })
+        }
+
+        function excludeHospital(hospitalId, excludedByInsuranceCompanyId) {
+            $.ajax({
+                type: "POST",
+                url: `/api/admin/exclude-hospital/insurance-company/${hospitalId}/${excludedByInsuranceCompanyId}`,
+                success: function success(result) {
+                    window.alert(result.message);
+                },
+                error: function error(error) {
+                    window.alert(error.responseJSON.message);
+                    console.log(error, 'error');
+                }
+            })
+        }
+
+        function logout() {
+            $.ajax({
+                type: "GET",
+                url: "/api/admin/logout",
+                success: function success(result) {
+                    window.location.href = '/';
+                },
+                error: function error(error) {
+                    console.log(error, 'error');
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

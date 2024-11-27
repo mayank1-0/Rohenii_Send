@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" data-navigation-type="default" data-navbar-horizontal-shape="default">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Roheni - Insurance Company </title>
+  <link rel="icon " href="/admin/assets/img/roheni-img/new-favicon.png">
+  <link rel="manifest" href="/admin/assets/img/favicons/manifest.json">
+  <meta name="msapplication-TileImage" content="/admin/assets/img/favicons/mstile-150x150.png">
+  <meta name="theme-color" content="#ffffff">/admin/
+  <script src="/admin/vendors/simplebar/simplebar.min.j/admin/s"></script>
+  <script src="/admin/assets/js/config.js"></script>/admin/
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+  <link href="/admin/vendors/simplebar/simplebar.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link href="/admin/assets/css/theme-rtl.min.css" type="text/css" rel="stylesheet" id="style-rtl">
+  <link href="/admin/assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
+  <link href="/admin/assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
+  <link href="/admin/assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+  <script>
+    var phoenixIsRTL = window.config.config.phoenixIsRTL;
+    if (phoenixIsRTL) {
+      var linkDefault = document.getElementById('style-default');
+      var userLinkDefault = document.getElementById('user-style-default');
+      linkDefault.setAttribute('disabled', true);
+      userLinkDefault.setAttribute('disabled', true);
+      document.querySelector('html').setAttribute('dir', 'rtl');
+    } else {
+      var linkRTL = document.getElementById('style-rtl');
+      var userLinkRTL = document.getElementById('user-style-rtl');
+      linkRTL.setAttribute('disabled', true);
+      userLinkRTL.setAttribute('disabled', true);
+    }
+  </script>
+  <link href="/admin/vendors/leaflet/leaflet.css" rel="stylesheet">
+  <link href="/admin/vendors/leaflet.markercluster/MarkerCluster.css" rel="stylesheet">
+  <link href="/admin/vendors/leaflet.markercluster/MarkerCluster.Default.css" rel="stylesheet">
+  <!-- jquery ajax -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <main class="main" id="top">
+    <%- include("../components/admin/navbar") %>
+
+    <nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
+      <div class="collapse navbar-collapse justify-content-between">
+        <div class="navbar-logo">
+          <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse"
+            aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
+                class="toggle-line"></span></span></button>
+          <a class="navbar-brand me-1 me-sm-3" href="index.html">
+            <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center"><img src="/admin/assets/img/roheni-img/new-favicon.png" alt="phoenix"
+                  width="27" />
+                <h5 class="logo-text ms-2 d-none d-sm-block"> Admin Roheni - Update Profile </h5>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <ul class="navbar-nav navbar-nav-icons flex-row">
+          <li class="nav-item">
+            <div class="theme-control-toggle fa-icon-wait px-2"><input
+                class="form-check-input ms-0 theme-control-toggle-input" type="checkbox"
+                data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" /><label
+                class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle"
+                data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Switch theme"
+                style="height:32px;width:32px;"><span class="icon" data-feather="moon"></span></label><label
+                class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle"
+                data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Switch theme"
+                style="height:32px;width:32px;"><span class="icon" data-feather="sun"></span></label></div>
+          </li>
+
+
+          <li class="nav-item dropdown"><a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button"
+              data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+              <div class="avatar avatar-l ">
+                <img class="rounded-circle " src="/admin/assets/img/team/40x40/57.webp" alt="" />
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border"
+              aria-labelledby="navbarDropdownUser">
+              <div class="card position-relative border-0">
+                <div class="card-body p-0">
+                  <div class="text-center pt-4 pb-3">
+                    <div class="avatar avatar-xl ">
+                      <img class="rounded-circle " src="/admin/assets/img/team/72x72/57.webp" alt="" />
+                    </div>
+                    <h6 class="mt-2 text-body-emphasis">Mayank </h6>
+                  </div>
+
+                </div>
+                <div class="overflow-auto scrollbar" style="height: 10rem;">
+                  <ul class="nav d-flex flex-column mb-2 pb-1">
+                    <li class="nav-item"><a class="nav-link px-3 d-block" href="#!"> <span
+                          class="me-2 text-body align-bottom" data-feather="user"></span><span>User name </span></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link px-3 d-block" href="#!"><span
+                          class="me-2 text-body align-bottom" data-feather="pie-chart"></span>Email </a></li>
+                    <li class="nav-item"><a class="nav-link px-3 d-block" href="#!"><span
+                          class="me-2 text-body align-bottom" data-feather="pie-chart"></span>Contact Number </a></li>
+                    <li class="nav-item"><a class="nav-link px-3 d-block" href="#!"><span
+                          class="me-2 text-body align-bottom" data-feather="pie-chart"></span>Dashboard</a></li>
+
+
+                  </ul>
+                </div>
+                <div class="card-footer p-0 border-top border-translucent">
+
+                  <div class="px-3"> <a class="btn btn-phoenix-secondary d-flex flex-center w-100" href=""
+                      id="admin-signout"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+                  <div class="my-2 text-center fw-bold fs-10 text-body-quaternary"><a class="text-body-quaternary me-1"
+                      href="#!">Privacy policy</a>&bull;<a class="text-body-quaternary mx-1" href="#!">Terms</a>&bull;<a
+                      class="text-body-quaternary ms-1" href="#!">Cookies</a></div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>  
+    <script>
+      var navbarTopShape = window.config.config.phoenixNavbarTopShape;
+      var navbarPosition = window.config.config.phoenixNavbarPosition;
+      var body = document.querySelector('body');
+      var navbarDefault = document.querySelector('#navbarDefault');
+      var navbarTop = document.querySelector('#navbarTop');
+      var topNavSlim = document.querySelector('#topNavSlim');
+      var navbarTopSlim = document.querySelector('#navbarTopSlim');
+      var navbarCombo = document.querySelector('#navbarCombo');
+      var navbarComboSlim = document.querySelector('#navbarComboSlim');
+      var dualNav = document.querySelector('#dualNav');
+
+      var documentElement = document.documentElement;
+      var navbarVertical = document.querySelector('.navbar-vertical');
+
+      if (navbarPosition === 'dual-nav') {
+        topNavSlim?.remove();
+        navbarTop?.remove();
+        navbarTopSlim?.remove();
+        navbarCombo?.remove();
+        navbarComboSlim?.remove();
+        navbarDefault?.remove();
+        navbarVertical?.remove();
+        dualNav.removeAttribute('style');
+        document.documentElement.setAttribute('data-navigation-type', 'dual');
+
+      } else if (navbarTopShape === 'slim' && navbarPosition === 'vertical') {
+        navbarDefault?.remove();
+        navbarTop?.remove();
+        navbarTopSlim?.remove();
+        navbarCombo?.remove();
+        navbarComboSlim?.remove();
+        topNavSlim.style.display = 'block';
+        navbarVertical.style.display = 'inline-block';
+        document.documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+
+      } else if (navbarTopShape === 'slim' && navbarPosition === 'horizontal') {
+        navbarDefault?.remove();
+        navbarVertical?.remove();
+        navbarTop?.remove();
+        topNavSlim?.remove();
+        navbarCombo?.remove();
+        navbarComboSlim?.remove();
+        dualNav?.remove();
+        navbarTopSlim.removeAttribute('style');
+        document.documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+      } else if (navbarTopShape === 'slim' && navbarPosition === 'combo') {
+        navbarDefault?.remove();
+        navbarTop?.remove();
+        topNavSlim?.remove();
+        navbarCombo?.remove();
+        navbarTopSlim?.remove();
+        dualNav?.remove();
+        navbarComboSlim.removeAttribute('style');
+        navbarVertical.removeAttribute('style');
+        document.documentElement.setAttribute('data-navbar-horizontal-shape', 'slim');
+      } else if (navbarTopShape === 'default' && navbarPosition === 'horizontal') {
+        navbarDefault?.remove();
+        topNavSlim?.remove();
+        navbarVertical?.remove();
+        navbarTopSlim?.remove();
+        navbarCombo?.remove();
+        navbarComboSlim?.remove();
+        dualNav?.remove();
+        navbarTop.removeAttribute('style');
+        document.documentElement.setAttribute('data-navigation-type', 'horizontal');
+      } else if (navbarTopShape === 'default' && navbarPosition === 'combo') {
+        topNavSlim?.remove();
+        navbarTop?.remove();
+        navbarTopSlim?.remove();
+        navbarDefault?.remove();
+        navbarComboSlim?.remove();
+        dualNav?.remove();
+        navbarCombo.removeAttribute('style');
+        navbarVertical.removeAttribute('style');
+        document.documentElement.setAttribute('data-navigation-type', 'combo');
+      } else {
+        topNavSlim?.remove();
+        navbarTop?.remove();
+        navbarTopSlim?.remove();
+        navbarCombo?.remove();
+        navbarComboSlim?.remove();
+        dualNav?.remove();
+        navbarDefault.removeAttribute('style');
+        navbarVertical.removeAttribute('style');
+      }
+
+      var navbarTopStyle = window.config.config.phoenixNavbarTopStyle;
+      var navbarTop = document.querySelector('.navbar-top');
+      if (navbarTopStyle === 'darker') {
+        navbarTop.setAttribute('data-navbar-appearance', 'darker');
+      }
+
+      var navbarVerticalStyle = window.config.config.phoenixNavbarVerticalStyle;
+      var navbarVertical = document.querySelector('.navbar-vertical');
+      if (navbarVerticalStyle === 'darker') {
+        navbarVertical.setAttribute('data-navbar-appearance', 'darker');
+      }
+    </script>
+    <div class="content">
+      <div class="pb-5">
+        <div class="row g-4">
+          <div class="col-12 col-xxl-6">
+            <div class="mb-8">
+              <h2 class="mb-2">Update Profile </h2>
+              <h5 class="text-body-tertiary fw-semibold">You can Change your profile here </h5>
+            </div>
+
+
+
+            <div class="col-12 col-xxl-6">
+              <div class="row g-3 ">
+                <div class="col-12 col-md-12 mb-4">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <div class="card_header_tp">
+                        <h4>Update Profile </h4>
+                        <hr>
+                      </div>
+                      <div class="card_body_main row p-3">
+                        <div class="col-md-3 by_tpa_input ">
+                          <label for="hospital-name"> Name </label>
+                          <input type="text" placeholder="Enter hospital name" id="hospital-name">
+                        </div>
+                        <div class="col-md-3 by_tpa_input ">
+                          <label for="contact-number">Contact Number </label>
+                          <input type="text" placeholder="Contact Number " id="contact-number">
+                        </div>
+                        <!-- <div class="col-md-3 by_tpa_input ">
+                          <label for="contact-person-name">Contact Person </label>
+                          <input type="text" placeholder=" Contact person" id="contact-person-name">
+                        </div> -->
+                        <!-- <div class="col-md-3 by_tpa_input ">
+                          <label for="email-address">Email Address </label>
+                        <input type="email" placeholder="Enter Address  " id="email-address">
+                      </div> -->
+                        <!-- <div class="col-md-3 by_tpa_input ">
+                          <label for="District">District </label>
+                          <input type="text" placeholder="District " id="district">
+                        </div>
+                        <div class="col-md-3 by_tpa_input ">
+                          <label for="pincode ">Pincode </label>
+                          <input type="text" placeholder="Enter Email " id="pincode">
+                        </div>
+                        <div class="col-md-3 by_tpa_input ">
+                          <label for="state ">State </label>
+                          <input type="text" placeholder="State" id="state">
+                        </div>
+                        <div class="col-md-3 by_tpa_input ">
+                          <label for="Degisnation ">Degisnation </label>
+                          <input type="text" placeholder="degisnation" id="designation">
+                        </div>
+                        <div class="col-md-3 by_tpa_input ">
+                          <label for="department  ">Department </label>
+                          <input type="text" placeholder="department" id="department">
+                        </div> -->
+                        <div class="col-md-12  by_tpa_input      tpa_sub_btn ">
+                          <button type="button" class="btn btn-primary" id="update_profile"> Update profile </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+      <div class="modal fade" id="searchBoxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true"
+        data-phoenix-modal="data-phoenix-modal" style="--phoenix-backdrop-opacity: 1;">
+        <div class="modal-dialog">
+          <div class="modal-content mt-15 rounded-pill">
+            <div class="modal-body p-0">
+              <div class="search-box navbar-top-search-box" data-list='{"valueNames":["title"]}' style="width: auto;">
+                <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input
+                    class="form-control search-input fuzzy-search rounded-pill form-control-lg" type="search"
+                    placeholder="Search..." aria-label="Search" />
+                  <span class="fas fa-search search-box-icon"></span>
+                </form>
+                <div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none"
+                  data-bs-dismiss="search"><button class="btn btn-link p-0" aria-label="Close"></button></div>
+                <div class="dropdown-menu border start-0 py-0 overflow-hidden w-100">
+                  <div class="scrollbar-overlay" style="max-height: 30rem;">
+                    <div class="list pb-3">
+                      <h6 class="dropdown-header text-body-highlight fs-10 py-2">24 <span
+                          class="text-body-quaternary">results</span></h6>
+                      <hr class="my-0" />
+                      <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                        Recently Searched </h6>
+                      <div class="py-2"><a class="dropdown-item" href="apps/e-commerce/landing/product-details.html">
+                          <div class="d-flex align-items-center">
+                            <div class="fw-normal text-body-highlight title"><span class="fa-solid fa-clock-rotate-left"
+                                data-fa-transform="shrink-2"></span> Store Macbook</div>
+                          </div>
+                        </a>
+                        <a class="dropdown-item" href="apps/e-commerce/landing/product-details.html">
+                          <div class="d-flex align-items-center">
+                            <div class="fw-normal text-body-highlight title"> <span
+                                class="fa-solid fa-clock-rotate-left" data-fa-transform="shrink-2"></span> MacBook Air -
+                              13″</div>
+                          </div>
+                        </a>
+                      </div>
+                      <hr class="my-0" />
+                      <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                        Products</h6>
+                      <div class="py-2"><a class="dropdown-item py-2 d-flex align-items-center"
+                          href="apps/e-commerce/landing/product-details.html">
+                          <div class="file-thumbnail me-2"><img class="h-100 w-100 object-fit-cover rounded-3"
+                              src="/admin/assets/img/products/60x60/3.png" alt="" /></div>
+                          <div class="flex-1">
+                            <h6 class="mb-0 text-body-highlight title">MacBook Air - 13″</h6>
+                            <p class="fs-10 mb-0 d-flex text-body-tertiary"><span
+                                class="fw-medium text-body-tertiary text-opactity-85">8GB Memory - 1.6GHz - 128GB
+                                Storage</span></p>
+                          </div>
+                        </a>
+                        <a class="dropdown-item py-2 d-flex align-items-center"
+                          href="apps/e-commerce/landing/product-details.html">
+                          <div class="file-thumbnail me-2"><img class="img-fluid" src="/admin/assets/img/products/60x60/3.png"
+                              alt="" /></div>
+                          <div class="flex-1">
+                            <h6 class="mb-0 text-body-highlight title">MacBook Pro - 13″</h6>
+                            <p class="fs-10 mb-0 d-flex text-body-tertiary"><span
+                                class="fw-medium text-body-tertiary text-opactity-85">30 Sep at 12:30 PM</span></p>
+                          </div>
+                        </a>
+                      </div>
+                      <hr class="my-0" />
+                      <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                        Quick Links</h6>
+                      <div class="py-2"><a class="dropdown-item" href="apps/e-commerce/landing/product-details.html">
+                          <div class="d-flex align-items-center">
+                            <div class="fw-normal text-body-highlight title"><span class="fa-solid fa-link text-body"
+                                data-fa-transform="shrink-2"></span> Support MacBook House</div>
+                          </div>
+                        </a>
+                        <a class="dropdown-item" href="apps/e-commerce/landing/product-details.html">
+                          <div class="d-flex align-items-center">
+                            <div class="fw-normal text-body-highlight title"> <span class="fa-solid fa-link text-body"
+                                data-fa-transform="shrink-2"></span> Store MacBook″</div>
+                          </div>
+                        </a>
+                      </div>
+                      <hr class="my-0" />
+                      <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                        Files</h6>
+                      <div class="py-2"><a class="dropdown-item" href="apps/e-commerce/landing/product-details.html">
+                          <div class="d-flex align-items-center">
+                            <div class="fw-normal text-body-highlight title"><span
+                                class="fa-solid fa-file-zipper text-body" data-fa-transform="shrink-2"></span> Library
+                              MacBook folder.rar</div>
+                          </div>
+                        </a>
+                        <a class="dropdown-item" href="apps/e-commerce/landing/product-details.html">
+                          <div class="d-flex align-items-center">
+                            <div class="fw-normal text-body-highlight title"> <span
+                                class="fa-solid fa-file-lines text-body" data-fa-transform="shrink-2"></span> Feature
+                              MacBook extensions.txt</div>
+                          </div>
+                        </a>
+                        <a class="dropdown-item" href="apps/e-commerce/landing/product-details.html">
+                          <div class="d-flex align-items-center">
+                            <div class="fw-normal text-body-highlight title"> <span class="fa-solid fa-image text-body"
+                                data-fa-transform="shrink-2"></span> MacBook Pro_13.jpg</div>
+                          </div>
+                        </a>
+                      </div>
+                      <hr class="my-0" />
+                      <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                        Members</h6>
+                      <div class="py-2"><a class="dropdown-item py-2 d-flex align-items-center"
+                          href="pages/members.html">
+                          <div class="avatar avatar-l status-online  me-2 text-body">
+                            <img class="rounded-circle " src="/admin/assets/img/team/40x40/10.webp" alt="" />
+                          </div>
+                          <div class="flex-1">
+                            <h6 class="mb-0 text-body-highlight title">Carry Anna</h6>
+                            <p class="fs-10 mb-0 d-flex text-body-tertiary">anna@technext.it</p>
+                          </div>
+                        </a>
+                        <a class="dropdown-item py-2 d-flex align-items-center" href="pages/members.html">
+                          <div class="avatar avatar-l  me-2 text-body">
+                            <img class="rounded-circle " src="/admin/assets/img/team/40x40/12.webp" alt="" />
+                          </div>
+                          <div class="flex-1">
+                            <h6 class="mb-0 text-body-highlight title">John Smith</h6>
+                            <p class="fs-10 mb-0 d-flex text-body-tertiary">smith@technext.it</p>
+                          </div>
+                        </a>
+                      </div>
+                      <hr class="my-0" />
+                      <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                        Related Searches</h6>
+                      <div class="py-2"><a class="dropdown-item" href="apps/e-commerce/landing/product-details.html">
+                          <div class="d-flex align-items-center">
+                            <div class="fw-normal text-body-highlight title"><span
+                                class="fa-brands fa-firefox-browser text-body" data-fa-transform="shrink-2"></span>
+                              Search in the Web MacBook</div>
+                          </div>
+                        </a>
+                        <a class="dropdown-item" href="apps/e-commerce/landing/product-details.html">
+                          <div class="d-flex align-items-center">
+                            <div class="fw-normal text-body-highlight title"> <span
+                                class="fa-brands fa-chrome text-body" data-fa-transform="shrink-2"></span> Store
+                              MacBook″</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <p class="fallback fw-bold fs-7 d-none">No Result Found.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="support-chat-container">
+        <div class="container-fluid support-chat">
+          <div class="card bg-body-emphasis">
+            <div class="card-header d-flex flex-between-center px-4 py-3 border-bottom border-translucent">
+              <h5 class="mb-0 d-flex align-items-center gap-2">Demo widget<span
+                  class="fa-solid fa-circle text-success fs-11"></span></h5>
+              <div class="btn-reveal-trigger"><button
+                  class="btn btn-link p-0 dropdown-toggle dropdown-caret-none transition-none d-flex" type="button"
+                  id="support-chat-dropdown" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
+                  aria-expanded="false" data-bs-reference="parent"><span
+                    class="fas fa-ellipsis-h text-body"></span></button>
+                <div class="dropdown-menu dropdown-menu-end py-2" aria-labelledby="support-chat-dropdown"><a
+                    class="dropdown-item" href="#!">Request a callback</a><a class="dropdown-item" href="#!">Search in
+                    chat</a><a class="dropdown-item" href="#!">Show history</a><a class="dropdown-item" href="#!">Report
+                    to Admin</a><a class="dropdown-item btn-support-chat" href="#!">Close Support</a></div>
+              </div>
+            </div>
+
+  </main>
+
+
+
+  <script src="/admin/vendors/popper/popper.min.js"></script>
+  <script src="/admin/vendors/bootstrap/bootstrap.min.js"></script>
+  <script src="/admin/vendors/anchorjs/anchor.min.js"></script>
+  <script src="/admin/vendors/is/is.min.js"></script>
+  <script src="/admin/vendors/fontawesome/all.min.js"></script>
+  <script src="/admin/vendors/lodash/lodash.min.js"></script>
+  <script src="/admin/vendors/list.js/list.min.js"></script>
+  <script src="/admin/vendors/feather-icons/feather.min.js"></script>
+  <script src="/admin/vendors/dayjs/dayjs.min.js"></script>
+  <script src="/admin/vendors/leaflet/leaflet.js"></script>
+  <script src="/admin/vendors/leaflet.markercluster/leaflet.markercluster.js"></script>
+  <script src="/admin/vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js"></script>
+  <script src="/admin/assets/js/phoenix.js"></script>
+  <script src="/admin/vendors/echarts/echarts.min.js"></script>
+  <script src="/admin/assets/js/ecommerce-dashboard.js"></script>
+  <script>
+    $(window).on('load', function () {
+      fetchAdminDetails();
+      $('#update_profile').click(updateProfile);
+      $('#admin-logout').click(logout);
+    });
+
+    function logout() {
+      $.ajax({
+        type: "GET",
+        url: "/api/admin/logout",
+        success: function success(result) {
+          window.location.href = '/';
+        },
+        error: function error(error) {
+          console.log(error, 'error');
+        }
+      })
+    }
+
+    function fetchAdminDetails() {
+      $.ajax({
+        type: "GET",
+        url: "/api/admin/details",
+        success: function success(result) {
+          let adminData = result.admin;
+          if (adminData) {
+            // Set placeholder values in the input fields
+            $("#hospital-name").attr("placeholder", adminData.name || 'New admin name');
+            $("#contact-number").attr("placeholder", adminData.mobile || 'New contact number');
+            // $("#contact-person-name").attr("placeholder", adminData.contactPerson || 'Contact person');
+            // $("#district").attr("placeholder", adminData.district || 'District');
+            // $("#pincode").attr("placeholder", adminData.pincode || 'Enter Pincode');
+            // $("#state").attr("placeholder", adminData.state || 'State');
+            // $("#designation").attr("placeholder", adminData.designation || 'Designation');
+            // $("#department").attr("placeholder", adminData.department || 'Department');
+          } else {
+            console.log('No admin data found');
+          }
+        },
+        error: function error(error) {
+          console.log(error, 'error');
+        }
+      })
+    }
+
+    function updateProfile() {
+      var data = {
+        // Get values of inputs by their IDs
+        name: $('#hospital-name').val(),
+        mobile: $('#contact-number').val(),
+      }
+      $.ajax({
+        type: "POST",
+        url: "/api/admin/update-details",
+        dataType: 'JSON',
+        data: data,
+        success: function success(result) {
+          window.alert('Admin details update successful');
+          window.location.reload(true);
+        },
+        error: function error(error) {
+          console.log(error, 'error');
+          window.alert(`${error.responseJSON.message}`);
+        }
+      })
+    }
+
+  </script>
+</body>
+
+
+</html>

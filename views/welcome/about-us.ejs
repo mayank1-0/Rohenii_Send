@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title -->
+    <title>Roheni Hospital - About us </title>
+    <!-- main css file  -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- bootsrtap css file  -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- favicon  -->
+    <link rel="icon" href="/images/new-favicon.png">
+    <!-- bootsrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- jquery ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Login Modal Structure -->
+    <div class="modal fade login-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down pop-up-main">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-primary" id="tpa-login">TPA </button>
+                    <button type="button" class="btn btn-primary" id="hospital-login">HOSPITAL </button>
+                    <button type="button" class="btn btn-primary" id="insurance-com-login">INSURANCE COMPANY </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pop-up-body">
+                    <input class="form-control form-control-sm mb-3" type="text" id="loginUserId" placeholder="Email "
+                        aria-label="User ID" required>
+                    <input class="form-control form-control-sm mb-3" type="password" id="loginPassword"
+                        placeholder="Password" aria-label="Password" required>
+
+                    <div class="captcha-box mb-3">
+                        <label for="captchaInput" class="form-label">Captcha</label>
+                        <input class="form-control form-control-sm" type="text" id="captchaInput"
+                            placeholder="Enter Captcha" aria-label="Captcha" required>
+                        <input class="form-control form-control-sm mt-2" disabled type="text" value="ABCD1234"
+                            aria-label="Captcha Value" readonly>
+                        <div class="refresh-btn mt-2" style="cursor:pointer;">
+                            <span>
+                                <i class="fa-solid fa-arrows-rotate"></i> Refresh Captcha
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- home main header  -->
+    <header class="home-main-header">
+        <nav class="home-main-nav">
+            <div class="nav-leftside">
+                <a href="/"> <img src="/images/main-full-logo.png" alt="roheni-logo" class="img-fluid"></a>
+            </div>
+            <div class="nav-rightside">
+                <div class="nav-rightside-ul">
+                    <li><a href="/"><button type="button" class="btn btn-primary">Home</button></a></li>
+                    <li>
+
+                        <button type="button" class="btn btn-primary"><a href="/about-us">About us </a></button>
+
+                    </li>
+                    <li>
+
+
+                        <button type="button" class="btn btn-primary"> <a href="/contact-us">Contact us </a></button>
+
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            Login
+                        </button>
+                    </li>
+
+
+
+
+
+                </div>
+            </div>
+
+            <!-- mobile view bars  -->
+            <div class="nav-rightside-for-mobile">
+                <i class="bi bi-list" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+                    aria-controls="offcanvasTop"> </i>
+
+
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop"
+                    aria-labelledby="offcanvasTopLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasTopLabel">
+                            <!-- main logo for offcanvas  -->
+                            <img src="/images/main-full-logo.png" class="img-fluid" alt="">
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="offcanvas-body-main-ul">
+                            <li><a href="index.html">Home </a></li>
+                            <li><a href="aboutus.html">About Us </a></li>
+                            <li><a href="contactus.html">Contact Us</a></li>
+                            <li><a href="#Newriegistor">New Registor with Us </a></li>
+                            <!-- <li><a href="#How to Registor">How To Registor </a></li> -->
+                            <li><a href="#Hospital request" data-bs-toggle="modal"
+                                    data-bs-target="#hospitalRequestModal">Hospital Request </a></li>
+                        </ul>
+                        <ul class="offcanvas-body-main-ul-2">
+                            <li>
+                                <a href="#login"><button type="button" class="btn btn-outline-primary"
+                                        data-bs-toggle="modal" data-bs-target="#loginModal">Login </button></a>
+                            </li>
+                            <!-- <li><a href="#regit"><button type="button" class="btn btn-outline-primary">Registor Now
+                                    </button></a></li> -->
+                        </ul>
+                        <div class="request-a-call-bk">
+                            <button type="button" class="btn btn-outline-primary">Request a Call Back
+                                <span><i class="bi bi-telephone"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </nav>
+
+    </header>
+    <!-- marquee tags  -->
+    <div class="container-fluid  marqee-main">
+        <div class="row align-items-center">
+            <div class="col-2 latest-new-img">
+                <img src="/images/latest-new--removebg-preview.png" class="img-fluid" width="150" alt="">
+            </div>
+            <div class="col-10 marquee-box">
+                <marquee behavior="" direction="" id="news-marquee">
+
+                    <span>
+                        <img src="/images/new-icon-smal.png" class="img-fluid" width="30" alt="">
+                    </span> <span id="news-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, modi.
+                        Nam totam fugit porro
+                        at autem aliquid architecto eos molestiae?
+                    </span>
+                    <span>
+                        <img src="/images/new-icon-smal.png" class="img-fluid" width="30" alt="">
+                    </span>
+                </marquee>
+            </div>
+        </div>
+
+    </div>
+    <!-- about us main section  -->
+    <section class="about-main-sec container">
+        <div class="main-about-heading about-sub-box">
+            <h2 class=" main-heading">
+                About <span>
+                    ROHENII
+                </span>
+            </h2>
+        </div>
+        <div class="first-box  about-sub-box" id="first-box">
+            <p class="common-heading" id="heading1">*Registry of Excluded Hospitals*</p>
+            <p id="paragraph1">Welcome to the official registry of hospitals excluded from coverage under policies
+                provided by
+                Nationalized Indian
+                Insurance Company. This registry aims to provide transparency and clarity to policyholders regarding
+                healthcare
+                institutions that are currently not covered under our health insurance plans.</p>
+        </div>
+        <div class="second-box about-sub-box" id="second-box">
+            <p class="common-heading" id="heading2">*Important Notes:*
+            </p>
+            <p id="paragraph2">The exclusion may be due to various reasons such as non-compliance with our quality
+                standards,
+                breach of agreement,
+                or administrative policies.
+                - This list is regularly updated to ensure that our customers have access to the latest information
+                regarding coverage.
+                - We encourage our policyholders to verify the coverage of hospitals before seeking medical
+                services.</p>
+        </div>
+        <div class="third-bpx about-sub-box" id="third-box">
+            <p class="common-heading" id="heading3">*Why Does This Matter?*</p>
+            <p id="paragraph3">At Nationalized Indian Insurance Company, we strive to ensure that you receive the best
+                care possible
+                under our
+                coverage. The exclusion of certain hospitals is based on strict guidelines that prioritize patient
+                safety, healthcare
+                quality, and compliance with industry regulations.</p>
+        </div>
+        <div class="forth-box about-sub-box" id="forth-box">
+            <p class="common-heading" id="heading4">*This Data taken by*</p>
+            <p id="paragraph4">This Registry Data Is Taken By Insurance And Health Tpa Company Of India Who Provides A
+                Comprehensive
+                List Of Hospitals That Are Currently Excluded From Our Insurance Coverage. These Exclusions Are Based On
+                Non-Compliance With Our Quality Standards, Policy Agreements, Or Other Regulatory Criteria. We Update
+                This
+                Information Regularly To Help Our Policyholders Make Informed Decisions Regarding Their Healthcare.
+                Before
+                Seeking Medical Services, We Encourage You To Review This List To Ensure That Your Chosen Hospital Is
+                Covered Under Your Insurance Plan.</p>
+        </div>
+        <div class="fifth-box about-sub-box" id="fifth-box">
+            <p class="common-heading" id="heading5">*Benefits of the Registry of Excluded Hospitals*</p>
+            <p id="paragraph5">The *Registry of Excluded Hospitals* ensures transparency and helps policyholders make
+                informed decisions
+                regarding their healthcare. By accessing this regularly updated list, customers can avoid unexpected
+                expenses
+                from seeking treatment at non-covered hospitals. This registry also reflects our commitment to
+                maintaining
+                high standards of care by excluding hospitals that do not meet our quality or regulatory benchmarks.
+                Ultimately, it protects policyholders from substandard services while guiding them toward covered,
+                trusted
+                healthcare providers The *Registry of Hospitals Excluded by Nationalized Indian Insurance Company
+                (ROHENII)* is a critical resource
+                for policyholders seeking to make informed decisions about their healthcare coverage. This registry
+                lists
+                hospitals that are excluded from insurance coverage due to non-compliance with quality standards, policy
+                violations, or other regulatory issues. </p>
+        </div>
+        <div class="sxith-sec about-sub-box" id="sxith-sec">
+            <p class="common-heading" id="heading6">*Why ROHENII Matters:*</p>
+            <p id="paragraph6">
+                *Transparency*: ROHENII provides clear information, ensuring that policyholders know which hospitals
+                    are
+                    not covered, thus preventing unexpected medical bills
+                *Informed Healthcare Decisions*: By consulting ROHENII, customers can select hospitals that are part
+                    of
+                    their insurance network, ensuring smoother claims processing.
+                *Updated Information*: The registry is continuously updated to reflect the most recent changes in
+                    hospital
+                    coverage, helping customers stay informed.
+                
+                *Focus on Quality*: Excluded hospitals often fail to meet the stringent quality or service standards
+                    set by the
+                    insurance provider, safeguarding policyholders from substandard care.
+            </p>
+        </div>
+        <div class="seventh-sec about-sub-box" id="seventh-sec">
+            <p class="common-heading" id="heading7">*How to Use ROHENII*:
+            </p>
+            <p id="paragraph7">Simply search by hospital name or location to determine if your preferred healthcare
+                facility is covered
+                under
+                your policy. We encourage all policyholders to review this registry before seeking treatment, ensuring
+                they
+                receive the full benefits of their health insurance.</p>
+        </div>
+        <div class="eighth-sec about-sub-box" id="eighth-sec">
+            <p class="common-heading" id="heading8">
+            </p>
+            <p id="paragraph8"></p>
+        </div>
+        <div class="ninth-sec about-sub-box" id="ninth-sec">
+            <p class="common-heading" id="heading9">
+            </p>
+            <p id="paragraph9"></p>
+        </div>
+        <div class="tenth-sec about-sub-box" id="tenth-sec">
+            <p class="common-heading" id="heading10">
+            </p>
+            <p id="paragraph10"></p>
+        </div>
+    </section>
+    <!-- footer -->
+    <footer class="home-main-footer">
+        <div class="footer-main-col ">
+            <ul class="footer-main-ul">
+                <li><span>E</span>XCLUDED HOSPITAL BY </li>
+                <li><span>I</span>NSURANCE</li>
+                <li><span>I</span>NFORMATION</li>
+                <li><span>B</span>UREAU OF INDIA</li>
+            </ul>
+        </div>
+        <!-- <div class="footer-main-col first-col">
+            <img src="/images/footer-1-img.png" class="img-fluid" alt="">
+        </div> -->
+
+        <div class="footer-main-col text-center">
+            <img src="/images/footer-1-img.png" class="img-fluid" alt="">
+            <br>
+            <img src="/images/footer-eiib.png" class="img-fluid" alt="">
+        </div>
+    </footer>
+    <!-- copy right line -->
+    <div class="copyright-line  text-center">
+        <p class="mb-0">© ROHENI COPYRIGHT ALL RIGHTS RESERVED </p>
+    </div>
+    <!-- bootsrap js file  -->
+    <script src="/js/bootsrtap.js"></script>
+    <!-- main js file  -->
+    <script src="/js/main.js"></script>
+
+    <script>
+        // Function to fetch the latest news from the server
+        function loadLatestNews() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/news/get-latest-news', // API to get the latest news
+                success: function (response) {
+                    if (response.success) {
+                        // If news is found, update the marquee text
+                        $('#news-text').text(response.latestNews);
+                    } else {
+                        // If no news, show a default message or handle error
+                        $('#news-text').text('No latest news available at the moment.');
+                    }
+                },
+                error: function (error) {
+                    console.error('Error fetching latest news:', error);
+                    // In case of error, set default text
+                    $('#news-text').text('Error fetching news.');
+                }
+            });
+        }
+
+        // Function to fetch the latest about us content from the server
+        function loadAboutUsContent() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/about-us/get-about-us', // API to get the about us content
+                success: function (response) {
+                    if (response.success) {
+                        const aboutUs = response.data;
+                        // Populate the About Us content dynamically
+                        $('#heading1').text(aboutUs.heading1);
+                        $('#paragraph1').text(aboutUs.paragraph1);
+
+                        $('#heading2').text(aboutUs.heading2);
+                        $('#paragraph2').text(aboutUs.paragraph2);
+
+                        $('#heading3').text(aboutUs.heading3);
+                        $('#paragraph3').text(aboutUs.paragraph3);
+
+                        $('#heading4').text(aboutUs.heading4);
+                        $('#paragraph4').text(aboutUs.paragraph4);
+
+                        $('#heading5').text(aboutUs.heading5);
+                        $('#paragraph5').text(aboutUs.paragraph5);
+
+                        $('#heading6').text(aboutUs.heading6);
+                        $('#paragraph6').text(aboutUs.paragraph6);
+
+                        $('#heading7').text(aboutUs.heading7);
+                        $('#paragraph7').text(aboutUs.paragraph7);
+
+                        $('#heading8').text(aboutUs.heading8);
+                        $('#paragraph8').text(aboutUs.paragraph8);
+
+                        $('#heading9').text(aboutUs.heading9);
+                        $('#paragraph9').text(aboutUs.paragraph9);
+
+                        $('#heading10').text(aboutUs.heading10);
+                        $('#paragraph10').text(aboutUs.paragraph10);
+
+
+                    } else {
+                        // If no content, show a default message or handle error
+                        console.error('Error fetching About Us content:', response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error fetching about us content:', error);
+                    alert(error.responseJSON.message);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadLatestNews();
+            loadAboutUsContent();
+        })
+    </script>
+</body>
+
+</html>
