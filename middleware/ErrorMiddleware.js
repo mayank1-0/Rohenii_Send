@@ -12,8 +12,14 @@ module.exports = (err,req,res,next)=>{
   // Mongoose duplicate key error
   // ==================================  Wrong Mongodb Id error ===============================
   if (err.code === 11000) {
-    const message = `${Object.keys(err.keyValue)} Must be Unique`;
-    err = new ErrorHandler(message, 400);
+
+    if(err.name==="MongoBulkWriteError"){
+      const message = err.writeErrors[0].err.errmsg;
+      err = new ErrorHandler(message, 400);
+    }else{
+      const message = `${Object.keys(err.keyValue)} Must be Unique`;
+      err = new ErrorHandler(message, 400);
+    }
   }
   // ==================================  Wrong Mongodb Id error ===============================
 

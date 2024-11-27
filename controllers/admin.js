@@ -894,9 +894,8 @@ exports.deleteSubAdmin = asyncHandler(async (req, res, next) => {
 //-----------------------------------------------SUB ADMIN--------------------------------------------------
 
 exports.exportHospitalsToExcel = asyncHandler(async (req, res, next) => {
-  const workbook = await Hospital.exportToExcel(); // Use model's export method
+  const workbook = await Hospital.exportToExcel();
 
-  // Set the response headers for the Excel file download
   res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
   res.setHeader("Content-Disposition", "attachment; filename=hospitals.xlsx");
 
@@ -918,3 +917,6 @@ exports.importHospitalsFromExcel = [
     res.status(200).json({ success: true, message: "Hospitals imported successfully" });
   }),
 ];
+
+
+

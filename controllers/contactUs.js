@@ -3,21 +3,18 @@ const ContactUs = require('../models/contactUs');
 // Controller for creating or updating the Contact Us details
 exports.createOrUpdateContactUsDetails = async (req, res) => {
     try {
-        // Check if the contact details already exist in the database (if any)
+
         let contactUs = await ContactUs.findOne();  // Assuming only one contact document exists
 
         if (contactUs) {
-            // If the document exists, update it with new data
             contactUs.address = req.body.address;
             contactUs.email = req.body.email;
             contactUs.contactNumber = req.body.contactNumber;
             contactUs.landlineNumber = req.body.landlineNumber || ''; // Optional field
 
-            // Save the updated document
             await contactUs.save();
             return res.status(200).json({ message: 'Contact Us details updated successfully!', contactUs });
         } else {
-            // If no document exists, create a new ContactUs document
             contactUs = new ContactUs({
                 address: req.body.address,
                 email: req.body.email,
@@ -25,7 +22,6 @@ exports.createOrUpdateContactUsDetails = async (req, res) => {
                 landlineNumber: req.body.landlineNumber || '',  // Optional field
             });
 
-            // Save the new document
             await contactUs.save();
             return res.status(201).json({ success: true, message: 'Contact Us details created successfully!', contactUs });
         }

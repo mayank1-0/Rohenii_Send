@@ -90,10 +90,6 @@ app.use('/api/about-us', aboutUsRoutes);
 app.use('/api/contact-us', contactUsRoutes);
 // ----- all contact-us related apis -----
 
-// ----- all enquiry related apis -----
-app.use('/api/enquiry', enquiryRoutes);
-// ----- all enquiry related apis -----
-
 app.use(ErrorMiddleware)
 
 module.exports = app
