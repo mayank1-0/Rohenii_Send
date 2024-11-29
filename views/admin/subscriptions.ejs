@@ -495,7 +495,7 @@
       $.ajax({
         type: "GET",
         url: `/api/exclusion/get-all-exclusion`,
-        data: { listType: listType, name: search },
+        data: { listType: listType },
         success: function success(result) {
           const list = result.data;
           $('#table_body').empty(); // Clear existing rows
