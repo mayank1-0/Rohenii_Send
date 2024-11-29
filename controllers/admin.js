@@ -4,6 +4,7 @@ const ErrorHandler = require("../middleware/ErrorHandler");
 const TPA = require("../models/TPA");
 const InsuranceCompany = require("../models/insuranceCompany");
 const Hospital = require("../models/hospital");
+const Exclusion = require("../models/exclusion");
 const TPAName = require('../models/tpaName');
 const InsuranceCompanyName = require('../models/insuranceCompanyName');
 const sendMail = require('../middleware/sendMail');
@@ -114,12 +115,11 @@ exports.resetPassword = async (req, res, next) => {
     if (req.body.password !== req.body.confirmPassword) {
       return next(new ErrorHandler("Password does not match confirm password", 400));
     }
-    
+
     admin.password = req.body.password;
     admin.resetPasswordToken = undefined;
     admin.resetPasswordExpire = undefined;
-    
-    console.log(admin,"admin")
+
     await admin.save();
     const token = await admin.getJWTToken();
 
@@ -550,30 +550,18 @@ exports.getExcludedHospitalList = asyncHandler(async (req, res, next) => {
     hospitals = await Hospital.find({
       membershipStatus: listType,
       isVerified: 'Approve',
-      // $or: [
-      //   { excludedByTPAs: { $exists: true, $ne: [] } }, // At least one value in excludedByTPAs
-      //   { excludedByInsuranceCompanies: { $exists: true, $ne: [] } } // At least one value in excludedByInsuranceCompanies
-      // ]
     });
   }
   else if (listType == 'Unpaid') {
     hospitals = await Hospital.find({
       membershipStatus: listType,
       isVerified: 'Approve',
-      // $or: [
-      //   { excludedByTPAs: { $exists: true, $ne: [] } }, // At least one value in excludedByTPAs
-      //   { excludedByInsuranceCompanies: { $exists: true, $ne: [] } } // At least one value in excludedByInsuranceCompanies
-      // ]
     });
   }
   else if (listType == 'Renewal') {
     hospitals = await Hospital.find({
       membershipStatus: listType,
       isVerified: 'Approve',
-      // $or: [
-      //   { excludedByTPAs: { $exists: true, $ne: [] } }, // At least one value in excludedByTPAs
-      //   { excludedByInsuranceCompanies: { $exists: true, $ne: [] } } // At least one value in excludedByInsuranceCompanies
-      // ]
     });
   }
   res.status(200).json({
@@ -784,6 +772,11 @@ exports.unExcludeHospital = asyncHandler(async (req, res, next) => {
     // Remove the hospital ID from the excludedByInsuranceCompanies array
     insuranceCompany.excludedHospitals.splice(indexInInsuranceCompany, 1);
     await insuranceCompany.save();
+
+    const exclusion = await Exclusion.findOneAndDelete({
+      hospitalId,
+      excludedByInsuranceCompanyId: insuranceCompanyId
+    });
   }
 
   else if (by == 'tpa') {
@@ -818,6 +811,11 @@ exports.unExcludeHospital = asyncHandler(async (req, res, next) => {
     // Remove the hospitalId from the excludedHospitals array
     tpa.excludedHospitals.splice(indexInTPA, 1);
     await tpa.save();
+
+    const exclusion = await Exclusion.findOneAndDelete({
+      hospitalId,
+      excludedByTPAId: tpaId
+    });
   }
 
   res.status(200).json({ success: true, message: 'Hospital unexcluded successfully' });

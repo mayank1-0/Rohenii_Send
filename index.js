@@ -15,6 +15,7 @@ const newsApiRoutes = require('./routes/news');
 const aboutUsRoutes = require('./routes/aboutUs');
 const contactUsRoutes = require('./routes/contactUs');
 const enquiryRoutes = require('./routes/enquiry');
+const exclusionRoutes = require('./routes/exclusion');
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const app = express();
@@ -89,6 +90,14 @@ app.use('/api/about-us', aboutUsRoutes);
 // ----- all contact-us related apis -----
 app.use('/api/contact-us', contactUsRoutes);
 // ----- all contact-us related apis -----
+
+// ----- all enquiry related apis -----
+app.use('/api/enquiry', enquiryRoutes);
+// ----- all enquiry related apis -----
+
+// ----- all exclusion related apis -----
+app.use('/api/exclusion', exclusionRoutes);
+// ----- all exclusion related apis -----
 
 app.use(ErrorMiddleware)
 

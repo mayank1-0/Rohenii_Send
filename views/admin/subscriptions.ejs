@@ -181,6 +181,8 @@
                                   <th>Contact Number</th>
                                   <th>Contact Person</th>
                                   <th>Status</th>
+                                  <th>Excluded by TPA</th>
+                                  <th>Excluded by Insurance Company</th>
                                   <th>Timing</th>
                                   <th>Address</th>
                                   <th>Pincode</th>
@@ -218,10 +220,10 @@
                   <div class="row g-2 gy-3">
                     <div class="col-auto flex-1">
                       <div class="search-box">
-                        <form class="position-relative"><input class="form-control search-input search form-control-sm"
-                            type="search" id="hospital-search" placeholder="Search" aria-label="Search" />
+                        <!-- <form class="position-relative"><input class="form-control search-input search form-control-sm"
+                            type="search" id="searchTableList" placeholder="Search" aria-label="Search" />
                           <span class="fas fa-search search-box-icon"></span>
-                        </form>
+                        </form> -->
                       </div>
                     </div>
 
@@ -239,6 +241,9 @@
                           <th scope="col" style="min-width: 150px; max-width: 200px;">Email</th>
                           <th scope="col" style="min-width: 150px; max-width: 200px;">Contact Number</th>
                           <th scope="col" style="min-width: 150px; max-width: 200px;">Contact Person</th>
+                          <th scope="col" style="min-width: 150px; max-width: 200px;">Excluded by TPA</th>
+                          <th scope="col" style="min-width: 150px; max-width: 200px;">Excluded by Insurance Company</th>
+                          <th scope="col" style="min-width: 150px; max-width: 200px;">Renewal Time</th>
                           <th scope="col" style="min-width: 150px; max-width: 200px;">Address</th>
                           <th scope="col" style="min-width: 150px; max-width: 200px;">Pincode</th>
                           <th scope="col" style="min-width: 150px; max-width: 200px;">District</th>
@@ -258,21 +263,6 @@
                   </div>
                 </div>
 
-              </div>
-              <div class="row align-items-center py-1">
-                <div class="pagination d-none"></div>
-                <div class="col d-flex fs-9">
-                  <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info"></p><a
-                    class="fw-semibold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1"
-                      data-fa-transform="down-1"></span></a><a class="fw-semibold d-none" href="#!"
-                    data-list-view="less">View Less</a>
-                </div>
-                <div class="col-auto d-flex">
-                  <button class="btn btn-link px-1 me-1" type="button" title="Previous"
-                    data-list-pagination="prev"><span class="fas fa-chevron-left me-2"></span>Previous</button><button
-                    class="btn btn-link px-1 ms-1" type="button" title="Next" data-list-pagination="next">Next<span
-                      class="fas fa-chevron-right ms-2"></span></button>
-                </div>
               </div>
             </div>
           </div>
@@ -480,6 +470,12 @@
   <script src="/admin/vendors/echarts/echarts.min.js"></script>
   <script src="/admin/assets/js/ecommerce-dashboard.js"></script>
   <script>
+    let search = '';
+
+    $("#searchTableList").on("keyup", function () {
+      search = $("#searchTableList").val();
+      excludedHospitalList();
+    })
     // Variable to hold the type of list selected related to the membership status
     let listType = 'Unpaid';
 
@@ -502,54 +498,68 @@
     })
 
     function excludedHospitalList() {
-      let search = $('#hospital-search').val();
       $.ajax({
         type: "GET",
-        url: `/api/admin/excluded-hospital-list`,
+        url: `/api/exclusion/get-all-exclusion`,
         data: { listType: listType, name: search },
         success: function success(result) {
           const list = result.data;
           $('#table_body').empty(); // Clear existing rows
+          if (list.length === 0) {
+            $('#table_body').append(`<tr >
+                        <td colspan="11" class="text-center">No Record Found</td>
+                    </tr>`); // Clear existing rows
+
+          }
           list.forEach((i, index) => {
             if (listType === 'Paid') {
               $("#table_body").append(`
-                    <tr id="tr${index + 1}" data-id="${i._id}">
-                        <td class="text-success"> ${i.name} </td>
-                        <td class="text-success"> ${i.email} </td>
-                        <td class="text-success"> ${i.contactNumber} </td>
-                        <td class="text-success"> ${i.contactPerson} </td>
-                        <td class="text-success"> ${i.address} </td>
-                        <td class="text-success"> ${i.pincode} </td>
-                        <td class="text-success"> ${i.district} </td>
-                        <td class="text-success"> ${i.state} </td>
+                    <tr id="tr${index + 1}"  data-id='${JSON.stringify(i)}'>
+                        <td class="text-success"> ${i.hospitalId.name} </td>
+                        <td class="text-success"> ${i.hospitalId.email} </td>
+                        <td class="text-success"> ${i.hospitalId.contactNumber} </td>
+                        <td class="text-success"> ${i.hospitalId.contactPerson} </td>
+                        <td class="text-success"> ${i.excludedByTPAId?.nameId?.name ? i.excludedByTPAId?.nameId?.name : '-'} </td>
+                        <td class="text-success"> ${i.excludedByInsuranceCompanyId?.nameId?.name ? i.excludedByInsuranceCompanyId?.nameId?.name : '-'} </td>
+                        <td class="text-success"> ${i.membershipRenewalDate ? new Date(i.membershipRenewalDate).toDateString() : '-'} </td>
+                        <td class="text-success"> ${i.hospitalId.address} </td>
+                        <td class="text-success"> ${i.hospitalId.pincode} </td>
+                        <td class="text-success"> ${i.hospitalId.district} </td>
+                        <td class="text-success"> ${i.hospitalId.state} </td>
                     </tr>
                 `)
             }
             else if (listType === 'Unpaid') {
               $("#table_body").append(`
-                    <tr id="tr${index + 1}" data-id="${i._id}">
-                        <td style="color:#fa3b1f"> ${i.name} </td>
-                        <td style="color:#fa3b1f"> ${i.email} </td>
-                        <td style="color:#fa3b1f"> ${i.contactNumber} </td>
-                        <td style="color:#fa3b1f"> ${i.contactPerson} </td>
-                        <td style="color:#fa3b1f"> ${i.address} </td>
-                        <td style="color:#fa3b1f"> ${i.pincode} </td>
-                        <td style="color:#fa3b1f"> ${i.district} </td>
-                        <td style="color:#fa3b1f"> ${i.state} </td>
+                    <tr id="tr${index + 1}" data-id='${JSON.stringify(i)}'>
+                        <td style="color:#fa3b1f"> ${i.hospitalId.name} </td>
+                        <td style="color:#fa3b1f"> ${i.hospitalId.email} </td>
+                        <td style="color:#fa3b1f"> ${i.hospitalId.contactNumber} </td>
+                        <td style="color:#fa3b1f"> ${i.hospitalId.contactPerson} </td>
+                        <td style="color:#fa3b1f"> ${i.excludedByTPAId?.nameId?.name ? i.excludedByTPAId?.nameId?.name : '-'} </td>
+                        <td style="color:#fa3b1f"> ${i.excludedByInsuranceCompanyId?.nameId?.name ? i.excludedByInsuranceCompanyId?.nameId?.name : '-'} </td>
+                        <td style="color:#fa3b1f"> ${i.membershipRenewalDate ? new Date(i.membershipRenewalDate).toDateString() : '-'} </td>
+                        <td style="color:#fa3b1f"> ${i.hospitalId.address} </td>
+                        <td style="color:#fa3b1f"> ${i.hospitalId.pincode} </td>
+                        <td style="color:#fa3b1f"> ${i.hospitalId.district} </td>
+                        <td style="color:#fa3b1f"> ${i.hospitalId.state} </td>
                     </tr>
                 `)
             }
             else if (listType === 'Renewal') {
               $("#table_body").append(`
-                    <tr id="tr${index + 1}" data-id="${i._id}">
-                        <td style="color:#e5780b"> ${i.name} </td>
-                        <td style="color:#e5780b"> ${i.email} </td>
-                        <td style="color:#e5780b"> ${i.contactNumber} </td>
-                        <td style="color:#e5780b"> ${i.contactPerson} </td>
-                        <td style="color:#e5780b"> ${i.address} </td>
-                        <td style="color:#e5780b"> ${i.pincode} </td>
-                        <td style="color:#e5780b"> ${i.district} </td>
-                        <td style="color:#e5780b"> ${i.state} </td>
+                    <tr id="tr${index + 1}" data-id='${JSON.stringify(i)}'>
+                        <td style="color:#e5780b"> ${i.hospitalId.name} </td>
+                        <td style="color:#e5780b"> ${i.hospitalId.email} </td>
+                        <td style="color:#e5780b"> ${i.hospitalId.contactNumber} </td>
+                        <td style="color:#e5780b"> ${i.hospitalId.contactPerson} </td>
+                        <td style="color:#e5780b"> ${i.excludedByTPAId?.nameId?.name ? i.excludedByTPAId?.nameId?.name : '-'} </td>
+                        <td style="color:#e5780b"> ${i.excludedByInsuranceCompanyId?.nameId?.name ? i.excludedByInsuranceCompanyId?.nameId?.name : '-'} </td>
+                        <td style="color:#e5780b"> ${i.membershipRenewalDate ? new Date(i.membershipRenewalDate).toDateString() : '-'} </td>
+                        <td style="color:#e5780b"> ${i.hospitalId.address} </td>
+                        <td style="color:#e5780b"> ${i.hospitalId.pincode} </td>
+                        <td style="color:#e5780b"> ${i.hospitalId.district} </td>
+                        <td style="color:#e5780b"> ${i.hospitalId.state} </td>
                     </tr>
                 `)
             }
@@ -564,8 +574,41 @@
     // Event delegation for click on table rows
     $('#table_body').on('click', 'tr', function () {
       const rowId = $(this).attr('id'); // Get the ID of the clicked row
-      const iD = $(this).data('id'); // Get the custom data attribute
-      completedDetailsSelectedHospital(iD);
+      let iD = $(this).data('id'); // Get the custom data attribute
+      
+      // iD = JSON.parse(iD);
+      $('#selected-hospital').empty(); // Clear existing rows
+      $("#selected-hospital").append(`
+                    <tr id="selected_tr" data-id="${iD._id}">
+                        <td class="text-center"> ${iD.hospitalId.name} </td>
+                        <td> ${iD.hospitalId.email} </td>
+                        <td> ${iD.hospitalId.contactNumber} </td>
+                        <td> ${iD.hospitalId.contactPerson} </td>
+                        <td> ${iD.membershipStatus} </td>
+                        <td> ${iD.excludedByTPAId?.nameId?.name ? iD.excludedByTPAId?.nameId?.name : '-'}</td>
+                        <td> ${iD.excludedByInsuranceCompanyId?.nameId?.name ? iD.excludedByInsuranceCompanyId?.nameId?.name : '-'}</td>
+                        <td> ${iD.membershipRenewalDate ? new Date(iD.membershipRenewalDate).toDateString() : '-'} </td>
+                        <td> ${iD.hospitalId.address} </td>
+                        <td> ${iD.hospitalId.pincode} </td>
+                        <td> ${iD.hospitalId.district} </td>
+                        <td> ${iD.hospitalId.state} </td>
+                        <td class=" white-space-nowrap text-centere-0 ">
+                                <div class="btn-reveal-trigger position-static"><button
+                                    class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10"
+                                    type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true"
+                                    aria-expanded="false" data-bs-reference="parent"><span
+                                      class="fas fa-ellipsis-h fs-10"></span></button>
+                                  <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item"
+                                      href="#!" onclick="changeMembershipStatus('Paid','${iD._id}')">Paid</a><div class="dropdown-divider"></div><a class="dropdown-item"
+                                      href="#!" onclick="changeMembershipStatus('Renewal','${iD._id}')">Renewal</a><div class="dropdown-divider"></div><a class="dropdown-item"
+                                      href="#!" onclick="changeMembershipStatus('Unpaid','${iD._id}')">Unpaid</a>
+                                  </div>
+                                </div>
+                              </td>
+                              
+                    </tr>
+                `)
+      // completedDetailsSelectedHospital(iD);
     });
 
     function completedDetailsSelectedHospital(id) {
@@ -619,9 +662,10 @@
     function updateMembershipStatus(id, status) {
       $.ajax({
         type: "PUT",
-        url: `/api/admin/update-membership-status/${status}/${id}`,
+        url: `/api/exclusion/update-exclusion-status/${status}/${id}`,
         success: function success(result) {
-          completedDetailsSelectedHospital(id);
+          // completedDetailsSelectedHospital(id);
+          location.reload(true);
         },
         error: function error(error) {
           console.log(error, 'error');

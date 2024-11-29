@@ -584,26 +584,48 @@
 
         function unExcludeHospital(hospitalId, unExcludedByInsuranceCompanyId) {
             $.ajax({
-              type: "POST",
-              url: `/api/admin/unexclude-hospital/insurance-company/${hospitalId}/${unExcludedByInsuranceCompanyId}`,
-              success: function success(result) {
-                window.alert(result.message);
-                $('#table_body').empty();
-                window.location.reload(true);
-              },
-              error: function error(error) {
-                window.alert(error.responseJSON.message);
-                console.log(error, 'error');
-              }
+                type: "POST",
+                url: `/api/admin/unexclude-hospital/insurance-company/${hospitalId}/${unExcludedByInsuranceCompanyId}`,
+                success: function success(result) {
+                    window.alert(result.message);
+                    $('#table_body').empty();
+                    window.location.reload(true);
+                },
+                error: function error(error) {
+                    window.alert(error.responseJSON.message);
+                    console.log(error, 'error');
+                }
             })
         }
 
         function excludeHospital(hospitalId, excludedByInsuranceCompanyId) {
+            let data = {
+                hospitalId,
+                // excludedByTPAId: null,
+                excludedByInsuranceCompanyId,
+                membershipStatus: 'Unpaid', 
+                // membershipBoughtDate: null, 
+                // membershipRenewalDate: null
+            }
             $.ajax({
                 type: "POST",
                 url: `/api/admin/exclude-hospital/insurance-company/${hospitalId}/${excludedByInsuranceCompanyId}`,
                 success: function success(result) {
                     window.alert(result.message);
+                    // 2nd ajax call
+                    $.ajax({
+                        type: "POST",
+                        url: `/api/exclusion/create`,
+                        dataType: 'JSON',
+                        data: data,
+                        success: function success(result) {
+                            window.alert(result.message);
+                        },
+                        error: function error(error) {
+                            window.alert(error.responseJSON.message);
+                            console.log(error, 'error');
+                        }
+                    })
                 },
                 error: function error(error) {
                     window.alert(error.responseJSON.message);
