@@ -6572,8 +6572,8 @@
                 <div class="col-auto">
                   <div class="d-flex">
                     <div class="search-box me-2">
-                      <form class="position-relative"><input class="form-control search-input search" type="search"
-                          placeholder="Search by name" aria-label="Search">
+                      <form class="position-relative"><input class="searchTableList form-control search-input search" type="search"
+                          placeholder="Search by Email..." aria-label="Search">
                         <svg class="svg-inline--fa fa-magnifying-glass search-box-icon" aria-hidden="true"
                           focusable="false" data-prefix="fas" data-icon="magnifying-glass" role="img"
                           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
@@ -6589,8 +6589,8 @@
                   </div>
                 </div>
                 <div class="col-12  ">
-                  <table class="table table-dark table-striped table-responsive">
-                    <thead>
+                  <table style="border: 1px solid lightgray;" class="table table-striped table-responsive">
+                    <thead style="border-bottom: 1px solid lightgray;">
                       <tr>
                         <th scope="col">S.No</th>
                         <th scope="col">TPA </th>
@@ -6907,6 +6907,15 @@
       $('#admin-signout').click(logout);
     });
 
+
+    let search = "";
+
+$(".searchTableList").on("keyup",function(){
+    search = $(".searchTableList").val();
+    getAllTPARequest();
+})
+
+
     function logout() {
       $.ajax({
         type: "GET",
@@ -6949,10 +6958,15 @@
       $.ajax({
         type: "GET",
         url: "/api/admin/getAllTPAsRequest",
-        // data: { name: search },
+        data: { name: search },
         success: function success(result) {
           let tpasArray = result.tpas;
           $("#tpa_request_table").html("");
+
+          if(tpasArray.length ===0){
+            $("#tpa_request_table").html(`<tr><td colspan="8" class="text-center">No Record Found</td></tr>`);         
+          }
+
           tpasArray.forEach((i, index) => {
             $("#tpa_request_table").append(`
                     <tr>

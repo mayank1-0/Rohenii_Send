@@ -584,17 +584,17 @@
 
         function unExcludeHospital(hospitalId, unExcludedByInsuranceCompanyId) {
             $.ajax({
-                type: "POST",
-                url: `/api/admin/unexclude-hospital/insurance-company/${hospitalId}/${unExcludedByInsuranceCompanyId}`,
-                success: function success(result) {
-                    window.alert(result.message);
-                    $('#table_body').empty();
-                    window.location.reload(true);
-                },
-                error: function error(error) {
-                    window.alert(error.responseJSON.message);
-                    console.log(error, 'error');
-                }
+              type: "POST",
+              url: `/api/admin/unexclude-hospital/insurance-company/${hospitalId}/${unExcludedByInsuranceCompanyId}`,
+              success: function success(result) {
+                window.alert(result.message);
+                $('#table_body').empty();
+                window.location.reload(true);
+              },
+              error: function error(error) {
+                window.alert(error.responseJSON.message);
+                console.log(error, 'error');
+              }
             })
         }
 

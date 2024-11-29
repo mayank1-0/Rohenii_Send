@@ -1,4 +1,4 @@
-const { signupHospital, getAllHospitalsDetails, exportExcel, importExcel } = require("../controllers/hospital.js");
+const { signupHospital, getAllHospitalsDetails, exportExcel, importExcel, getAllHospitalsDetailsForTpa } = require("../controllers/hospital.js");
 const router = require("express").Router();
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
@@ -19,6 +19,7 @@ router.route("/import-excel").post(upload.single('file'),importExcel);
 
 //---------- fetch all hospital details ---------
 router.route("/getAllHospitalsDetails").get( getAllHospitalsDetails);
+router.route("/getAllHospitalsDetailsForTpa").get( getAllHospitalsDetailsForTpa);
 //---------- fetch all hospital details ---------
 
 module.exports = router;

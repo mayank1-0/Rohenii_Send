@@ -3,6 +3,7 @@ const ErrorHandler = require("../middleware/ErrorHandler");
 const Hospital = require("../models/hospital");
 const ExcelJS = require("exceljs")
 const InsuranceCompany = require("../models/insuranceCompany");
+const PaginationAndFilter = require("../middleware/paginationAndFilter")
 
 
 
@@ -52,6 +53,16 @@ exports.getAllHospitalsDetails = asyncHandler(async (req, res, next) => {
         hospitals,
         message: "Hospitals fetched successfully"
     });
+  });
+  // ------------------ getAllHospitalsDetails -------------------
+
+
+  // ------------------ getAllHospitalsDetails -------------------
+exports.getAllHospitalsDetailsForTpa = asyncHandler(async (req, res, next) => {
+    // const hospitals = await .find({ isVerified: 'Approve' });
+    const hospital =await new PaginationAndFilter(Hospital);
+const hospitals = await hospital.getPaginatedAndFilteredResults(req.query)
+  res.status(200).json(hospitals)
   });
   // ------------------ getAllHospitalsDetails -------------------
 

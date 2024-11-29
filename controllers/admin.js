@@ -466,7 +466,14 @@ exports.addInsuranceCompanyName = asyncHandler(async (req, res, next) => {
 
 // ------------------ getAllHospitalsRequest -------------------
 exports.getAllHospitalsRequest = asyncHandler(async (req, res, next) => {
-  const hospitals = await Hospital.find({ isVerified: 'Request' }).select('+password');
+  const {name} = req.query;
+
+  const filter = {isVerified: 'Request'}
+
+  if(name){
+    filter.name={ $regex: name, $options: 'i' }
+  }
+  const hospitals = await Hospital.find(filter).select('+password');
   res.status(200).json({
     success: true,
     hospitals,
@@ -477,7 +484,14 @@ exports.getAllHospitalsRequest = asyncHandler(async (req, res, next) => {
 
 // ------------------ getAllHospitalsDetails -------------------
 exports.getAllHospitalsDetails = asyncHandler(async (req, res, next) => {
-  const hospitals = await Hospital.find({ isVerified: 'Approve' }).select('+password');
+  const {name} = req.query;
+
+  const filter = {isVerified: 'Approve'}
+
+  if(name){
+    filter.name={ $regex: name, $options: 'i' }
+  }
+  const hospitals = await Hospital.find(filter).select('+password');
   res.status(200).json({
     success: true,
     hospitals,
@@ -488,7 +502,14 @@ exports.getAllHospitalsDetails = asyncHandler(async (req, res, next) => {
 
 // -------------- fetch all insurance companies requests ------------
 exports.getAllInsuranceCompaniesRequest = asyncHandler(async (req, res, next) => {
-  const insurnaceCompanies = await InsuranceCompany.find({ isVerified: 'Request' }).select('+password').populate({
+  const {name} = req.query;
+
+  const filter = {isVerified: 'Request'}
+
+  if(name){
+    filter.email={ $regex: name, $options: 'i' }
+  }
+  const insurnaceCompanies = await InsuranceCompany.find(filter).select('+password').populate({
     path: 'nameId',
     select: '-_id name' // Only select the name field
   });
@@ -502,7 +523,15 @@ exports.getAllInsuranceCompaniesRequest = asyncHandler(async (req, res, next) =>
 
 // ------------------ getAllInsuranceCompaniesDetails -------------------
 exports.getAllInsuranceCompaniesDetails = asyncHandler(async (req, res, next) => {
-  const insuranceCompanies = await InsuranceCompany.find({ isVerified: 'Approve' }).select('+password').populate({
+  const {name} = req.query;
+
+  const filter = {isVerified: 'Approve'}
+
+  if(name){
+    filter.email={ $regex: name, $options: 'i' }
+  }
+
+  const insuranceCompanies = await InsuranceCompany.find(filter).select('+password').populate({
     path: 'nameId',
     select: '-_id name' // Only select the name field
   });
@@ -516,7 +545,15 @@ exports.getAllInsuranceCompaniesDetails = asyncHandler(async (req, res, next) =>
 
 // -------------- fetch all TPAs Request ------------
 exports.getAllTPAsRequest = asyncHandler(async (req, res, next) => {
-  const tpas = await TPA.find({ isVerified: "Request" }).select('+password').populate({
+  const {name} = req.query;
+
+  const filter = {isVerified: 'Request'}
+
+  if(name){
+    filter.email={ $regex: name, $options: 'i' }
+  }
+
+  const tpas = await TPA.find(filter).select('+password').populate({
     path: 'nameId',
     select: '-_id name' // Only select the name field
   });
@@ -530,7 +567,14 @@ exports.getAllTPAsRequest = asyncHandler(async (req, res, next) => {
 
 // ------------------ getAllTPADetails -------------------
 exports.getAllTPADetails = asyncHandler(async (req, res, next) => {
-  const tpas = await TPA.find({ isVerified: 'Approve' }).select('+password').populate({
+  const {name} = req.query;
+
+  const filter = {isVerified: 'Approve'}
+
+  if(name){
+    filter.email={ $regex: name, $options: 'i' }
+  }
+  const tpas = await TPA.find(filter).select('+password').populate({
     path: 'nameId',
     select: '-_id name' // Only select the name field
   });

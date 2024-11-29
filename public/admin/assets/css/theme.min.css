@@ -43497,7 +43497,7 @@ html:not(.navbar-vertical-collapsed) .navbar-vertical .firefox .chat-sidebar .na
 }
 
 .input_pass {
-    border: 1px solid white;
+    border: 1px solid lightgray;
     display: flex;
     align-items: center;
     border-radius: 5px;
