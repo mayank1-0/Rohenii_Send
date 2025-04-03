@@ -578,7 +578,7 @@
                     window.location.href = '/';
                 },
                 error: function error(error) {
-                    console.log(error, 'error');
+                    ;
                 }
             })
         }
@@ -626,7 +626,7 @@
                     $('#aboutUsForm')[0].reset();  // Reset form fields
                 },
                 error: function error(error) {
-                    console.log(error, 'error');
+                    ;
                     window.alert(`${error.responseJSON.message}`);
                 }
             })

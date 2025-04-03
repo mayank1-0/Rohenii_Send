@@ -20,7 +20,7 @@ require('dotenv').config();
 
 exports.loginAdmin = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
-  const admin = await Admin.findOne({ email: email }).select("+password"); // 
+  const admin = await Admin.findOne({ email: email }).select("+password");
   if (!admin) return res.status(500).json({ success: false, message: "Admin Incorrect!", alert: true })
   const comparePassword = await admin.comparePassword(password)
   if (!comparePassword) return res.status(500).json({ success: false, message: "Password Incorrect!", alert: true })

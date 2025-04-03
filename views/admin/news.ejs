@@ -474,7 +474,7 @@
           window.location.href = '/';
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
         }
       })
     }
@@ -494,7 +494,7 @@
           window.location.reload(true);
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
           window.alert(`${error.responseJSON.message}`);
         }
       })

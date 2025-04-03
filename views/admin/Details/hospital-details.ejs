@@ -8797,7 +8797,7 @@
                     window.location.href = '/';
                 },
                 error: function error(error) {
-                    console.log(error, 'error');
+                    ;
                 }
             })
         }
@@ -8887,7 +8887,7 @@
                     });
                 },
                 error: function error(error) {
-                    console.log(error, 'error');
+                    ;
                 }
             })
         }
@@ -8901,7 +8901,6 @@
 
         $('#uploadForm').on('submit', function(e) {
                 e.preventDefault(); // Prevent the default form submission
-            console.log("click")
                 const formData = new FormData();
                 formData.append("file", $('#fileInput')[0].files[0])
 
@@ -8912,7 +8911,6 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
-                        console.log(response)
                         $('#message').text(response.message);
                         getAllHospitalDetails()
                     },

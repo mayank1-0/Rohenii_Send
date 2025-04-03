@@ -557,7 +557,7 @@
                     });
                 },
                 error: function error(error) {
-                    console.log(error, 'error');
+                    ;
                     window.alert(error.responseJSON.message);
                 }
             })
@@ -574,7 +574,7 @@
                 },
                 error: function error(error) {
                     window.alert(error.responseJSON.message);
-                    console.log(error, 'error');
+                    ;
                 }
             })
         }
@@ -583,10 +583,7 @@
             let data = {
                 hospitalId, 
                 excludedByTPAId, 
-                // excludedByInsuranceCompanyId: null, 
                 membershipStatus: 'Unpaid', 
-                // membershipBoughtDate: null, 
-                // membershipRenewalDate: null
             }
             $.ajax({
                 type: "POST",
@@ -604,13 +601,13 @@
                         },
                         error: function error(error) {
                             window.alert(error.responseJSON.message);
-                            console.log(error, 'error');
+                            ;
                         }
                     })
                 },
                 error: function error(error) {
                     window.alert(error.responseJSON.message);
-                    console.log(error, 'error');
+                    ;
                 }
             })
         }
@@ -623,7 +620,7 @@
                     window.location.href = '/';
                 },
                 error: function error(error) {
-                    console.log(error, 'error');
+                    ;
                 }
             })
         }

@@ -8183,7 +8183,7 @@
                     window.location.reload(true);
                 },
                 error: function error(error) {
-                    console.log(error, 'error');
+                    ;
                     window.alert(`${error.responseJSON.message}`);
                 }
             })
@@ -8197,7 +8197,7 @@
                     window.location.href = '/';
                 },
                 error: function error(error) {
-                    console.log(error, 'error');
+                    ;
                 }
             })
         }
@@ -8206,7 +8206,6 @@
             $.ajax({
                 type: "GET",
                 url: "/api/admin/get-all-subadmin-details",
-                // data: { name: search },
                 success: function success(result) {
                     let subadminArray = result.subadmins;
                     $("#leal-tables-body").html("");
@@ -8266,7 +8265,7 @@
                     });
                 },
                 error: function error(error) {
-                    console.log(error, 'error');
+                    ;
                 }
             })
         }

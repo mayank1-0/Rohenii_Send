@@ -5,9 +5,9 @@ require("dotenv").config({path:"../.env"})
 
 const admininitialize = asyncHandler(async () => {
   await mongoose.connect(process.env.DB_URI).then(()=>{
-    console.log("db Connected")
+    console.log("Database Connected")
   }).catch((err)=>{
-    console.log("db not connected")
+    console.log("Database not connected")
     process.exit(1)
   })
   await Admin.deleteMany()

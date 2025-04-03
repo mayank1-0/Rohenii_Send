@@ -6921,7 +6921,7 @@ $(".searchTableList").on("keyup",function(){
           window.location.href = '/';
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
         }
       })
     }
@@ -6936,19 +6936,17 @@ $(".searchTableList").on("keyup",function(){
         address: $('#address').val(),
         establishedYear: $('#est_year').val(),
       }
-      console.log(data);
       $.ajax({
         type: "POST",
         url: "/api/admin/add-insurance-company-name",
         dataType: 'JSON',
         data: data,
         success: function success(result) {
-          console.log('result', result);
           window.alert('Insurance company addition successful');
           window.location.reload(true);
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
           window.alert(`${error.responseJSON.message}`);
         }
       })
@@ -6992,7 +6990,7 @@ $(".searchTableList").on("keyup",function(){
           });
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
         }
       })
     }
@@ -7008,7 +7006,7 @@ $(".searchTableList").on("keyup",function(){
           getAllInsuranceCompanyRequest();
         },
         error: function (error) {
-          console.log(error, 'error');
+          ;
         }
       });
     }

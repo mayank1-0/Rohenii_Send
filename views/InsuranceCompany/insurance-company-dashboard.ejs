@@ -687,7 +687,7 @@ $(".searchTableList").on("keyup",function(){
           window.location.href = '/';
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
         }
       })
     }
@@ -715,7 +715,7 @@ $(".searchTableList").on("keyup",function(){
           window.location.reload(true);
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
           window.alert(`${error.responseJSON.message}`);
         }
       })
@@ -731,7 +731,6 @@ $(".searchTableList").on("keyup",function(){
       $.ajax({
         type: "GET",
         url: "/api/hospital/getAllHospitalsDetailsForTpa",
-        // data: { name: search },
         data: { page: page ,name:search,isVerified:"Approve"},
         success: function success(result) {
           let churan = result.items;
@@ -772,24 +771,13 @@ $(".searchTableList").on("keyup",function(){
           });
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
         }
       })
     }
 
     function unExcludeHospital(id) {
       window.alert(`Call admin to unexclude`);
-      // $.ajax({
-      //   type: "PUT",
-      //   url: `/api/insuranceCompany/un-exclude-hospital/${id}`,
-      //   success: function success(result) {
-      //     window.alert(result.message);
-      //   },
-      //   error: function error(error) {
-      //     window.alert(error.responseJSON.message);
-      //     console.log(error, 'error');
-      //   }
-      // })
     }
 
     function excludeHospital(id) {
@@ -801,7 +789,7 @@ $(".searchTableList").on("keyup",function(){
         },
         error: function error(error) {
           window.alert(error.responseJSON.message);
-          console.log(error, 'error');
+          ;
         }
       })
     }

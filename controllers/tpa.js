@@ -45,10 +45,6 @@ exports.signupTPA = asyncHandler(async (req, res, next) => {
     excludedHospitals = []
   } = req.body;
 
-  // Generate OTP and its expiration
-  // const otp = GanerateOTP(); // Generates a random OTP
-  // const otpExpiration = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
-
   // Create new TPA instance
   const newTPA = new TPA({
     nameId,
@@ -71,10 +67,6 @@ exports.signupTPA = asyncHandler(async (req, res, next) => {
       { $addToSet: { excludedByTPAs: newTPA._id } } // Use $addToSet to avoid duplicates
     );
   }
-
-  // const option = { email, message: `OTP for verification is ${otp}. It's valid till ${otpExpiration}`, subject: `OTP`, condidate: null };
-  // // Send OTP email (implement this function based on your email service)
-  // await sendMail(option);
 
   res.status(201).json({
     success: true,

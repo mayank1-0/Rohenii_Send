@@ -507,7 +507,7 @@
           window.location.href = '/';
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
         }
       })
     }
@@ -522,18 +522,12 @@
             // Set placeholder values in the input fields
             $("#hospital-name").attr("placeholder", adminData.name || 'New admin name');
             $("#contact-number").attr("placeholder", adminData.mobile || 'New contact number');
-            // $("#contact-person-name").attr("placeholder", adminData.contactPerson || 'Contact person');
-            // $("#district").attr("placeholder", adminData.district || 'District');
-            // $("#pincode").attr("placeholder", adminData.pincode || 'Enter Pincode');
-            // $("#state").attr("placeholder", adminData.state || 'State');
-            // $("#designation").attr("placeholder", adminData.designation || 'Designation');
-            // $("#department").attr("placeholder", adminData.department || 'Department');
           } else {
             console.log('No admin data found');
           }
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
         }
       })
     }
@@ -554,7 +548,7 @@
           window.location.reload(true);
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
           window.alert(`${error.responseJSON.message}`);
         }
       })

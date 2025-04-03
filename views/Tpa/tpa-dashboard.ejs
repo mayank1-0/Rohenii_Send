@@ -6568,7 +6568,7 @@
           window.location.href = '/';
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
         }
       })
     }
@@ -6596,7 +6596,7 @@
           window.location.reload(true);
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
           window.alert(`${error.responseJSON.message}`);
         }
       })
@@ -6614,7 +6614,6 @@ $(document).on('click', '.page-link', function(e) {
       $.ajax({
         type: "GET",
         url: "/api/hospital/getAllHospitalsDetailsForTpa",
-        // data: { name: search },
         data: { page: page ,name:search,isVerified:"Approve"},
         success: function success(result) {
           let churan = result.items;
@@ -6656,7 +6655,7 @@ $(document).on('click', '.page-link', function(e) {
           });
         },
         error: function error(error) {
-          console.log(error, 'error');
+          ;
         }
       })
     }
@@ -6674,7 +6673,7 @@ $(document).on('click', '.page-link', function(e) {
         },
         error: function error(error) {
           window.alert(error.responseJSON.message);
-          console.log(error, 'error');
+          ;
         }
       })
     }

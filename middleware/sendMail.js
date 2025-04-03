@@ -3,7 +3,6 @@ require("dotenv").config({path:"../.env"})
 
 const sendMail = async(option)=>{
     const {email  , message , subject,condidate} = option;
-console.log(process.env.MAIL_SERVICE,"process.env.MAIL_SERVICE")
     const transport = await nodemail.createTransport({
         host: process.env.MAIL_SERVICE,
         port: 587,               
