@@ -1,13 +1,14 @@
 const asyncHandler = require("../middleware/asyncHandler");
 const Admin = require("../models/admin");
 const mongoose = require("mongoose")
-require("dotenv").config({path:"../.env"})
+require("dotenv").config()
 
 const admininitialize = asyncHandler(async () => {
   await mongoose.connect(process.env.DB_URI).then(()=>{
     console.log("Database Connected")
   }).catch((err)=>{
     console.log("Database not connected")
+    console.log(`${err}`)
     process.exit(1)
   })
   await Admin.deleteMany()
